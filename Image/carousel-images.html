@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>carousel-images</title>
+    <link rel="stylesheet" href="carousel-images.css" />
+  </head>
+  <body>
+    <div class="main">
+      <!-- <h1>1</h1>
+      <h1>2</h1>
+      <h1>3</h1>
+      <h1>4</h1>
+      <h1>5</h1> -->
+      <img
+        width="100px"
+        height="auto"
+        src="https://images.pexels.com/photos/12309506/pexels-photo-12309506.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
+        alt=""
+      />
+      <img
+        width="100px"
+        height="auto"
+        src="https://images.pexels.com/photos/12309506/pexels-photo-12309506.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
+        alt=""
+      />
+      <img
+        width="100px"
+        height="auto"
+        src="https://images.pexels.com/photos/12309506/pexels-photo-12309506.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
+        alt=""
+      />
+      <img
+        width="100px"
+        height="auto"
+        src="https://images.pexels.com/photos/12309506/pexels-photo-12309506.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
+        alt=""
+      />
+      <img
+        width="100px"
+        height="auto"
+        src="https://images.pexels.com/photos/12309506/pexels-photo-12309506.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
+        alt=""
+      />
+      <img
+        width="100px"
+        height="auto"
+        src="https://images.pexels.com/photos/12309506/pexels-photo-12309506.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
+        alt=""
+      />
+    </div>
+    <button onclick="slideImg()">slide</button>
+
+    <script>
+      let currrent = 0;
+      // const imgs = document.querySelectorAll("h1");
+      const imgs = document.querySelectorAll("img");
+      function slideImg() {
+        currrent == imgs.length - 1 ? (currrent = 0) : (currrent += 1);
+        console.log("current", currrent);
+        imgs.forEach((val, ind) => {
+          if (currrent > ind) {
+            val.setAttribute("class", "left");
+          } else if (currrent < ind) {
+            val.setAttribute("class", "right");
+            if (currrent + 1 == ind) {
+              val.classList.add("next");
+            }
+          } else if (currrent == ind) {
+            val.setAttribute("class", "curr");
+          } else {
+            null;
+          }
+          if (currrent == imgs.length - 1) {
+            // imgs[0].setAttribute("class", "curr");
+            imgs[0].setAttribute("class", "right");
+          }
+          if (currrent == 0) {
+            // imgs[0].setAttribute("class", "curr");
+            imgs[imgs.length - 1].setAttribute("class", "left");
+          }
+        });
+        return;
+      }
+    </script>
+  </body>
+</html>
