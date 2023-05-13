@@ -1,0 +1,59 @@
+$gap: 20px;
+
+
+.isScrolled {
+    box-shadow: 0 8px 16px 0 rgba(145, 158, 171, .16);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+
+    .logo_section {
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+        font-family: 'Roboto';
+
+        img {
+            height: 40px;
+            margin-right: 10px;
+        }
+    }
+
+    .nav_items {
+        display: flex;
+        gap: $gap;
+
+        a {
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 28px;
+            color: var(--primary-text-color);
+        }
+    }
+
+    .auth_section {
+        display: flex;
+        gap: 10px;
+
+        button {
+            &:first-child {
+                border: none !important;
+                color: var(--primary-text-color);
+
+                &:hover {
+                    background: none;
+                }
+            }
+
+            &:last-child {
+                background: var(--primary-color);
+                border: 0;
+            }
+        }
+    }
+}
