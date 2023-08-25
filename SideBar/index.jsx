@@ -12,6 +12,8 @@ const Sidebar = () => {
     const toggle = () => {
         const doc = document.querySelector(".Sidebar")
         doc.classList.toggle("quick")
+        const toggleMenu = document.querySelector("#toggle")
+
     }
     const darkTheme = {
         bg: "#09090A",
@@ -145,14 +147,12 @@ const Sidebar = () => {
                 </a>
             </div>
             <span id='toggle' onClick={toggle}>
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="32" height="32" rx="8" fill="#C8BCF6" />
-                    <path d="M13 22L19.102 16.3674C19.3165 16.1694 19.3165 15.8306 19.102 15.6326L13 10" stroke="#09090A" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
+
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="32" height="32" rx="8" fill="#C8BCF6" />
                     <path d="M19 10L12.898 15.6326C12.6835 15.8306 12.6835 16.1694 12.898 16.3674L19 22" stroke="#09090A" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
+
             </span>
         </div>
     )
