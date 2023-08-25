@@ -1,10 +1,11 @@
-* {
+#root {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    --lgmain-bg: #09090A;
-    --lgtext: #EFEFEF;
-    --lgicons: #C8BCF6;
+    --bg: #09090A;
+    --textColor: #EFEFEF;
+    --iconsColor: #C8BCF6;
+    --hoverColor: #f5f5f512;
     // Dark theme
     --drmain-bg: #ffff;
     --drtext: #09090A;
@@ -13,33 +14,42 @@
     --commentText: #b1b1b1;
 }
 
+body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 
 .Sidebar {
     padding: 10px;
-    background-color: var(--lgmain-bg);
+    background-color: var(--bg);
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: max-content;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
     justify-content: space-around;
     position: relative;
     width: 190px;
     transition: .3s ease-in-out;
+    box-shadow: 7px 2px 13px 1px var(--hoverColor);
 
     .logo {
         display: flex;
         gap: 10px;
+        align-items: center;
 
         .text {
 
             h2 {
+                margin: 0px;
                 font-size: 1.2rem;
-                color: var(--lgtext);
+                color: var(--textColor);
             }
 
             p {
+                margin: 0px;
                 font-size: .7rem;
                 color: var(--commentText);
             }
@@ -61,19 +71,19 @@
             border-radius: 4px;
 
             svg>* {
-                stroke: var(--lgtext);
+                stroke: var(--textColor);
             }
 
             i {
-                color: var(--lgicons);
+                color: var(--iconsColor);
             }
 
             span {
-                color: var(--lgtext);
+                color: var(--textColor);
             }
 
             &:hover {
-                background-color: #f5f5f512;
+                background-color: var(--hoverColor);
             }
         }
     }
@@ -90,6 +100,47 @@
         overflow: hidden;
         text-align: center;
     }
+
+    .themeMode {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        transition: 0.2s ease-in-out;
+        padding: 10px;
+        border-radius: 4px;
+        align-items: center;
+        background-color: var(--hoverColor);
+
+
+        label,
+        svg {
+            cursor: pointer;
+        }
+
+        label {
+            transition: .5s;
+            color: var(--textColor);
+        }
+
+        #sun,
+        #moon {
+            display: none;
+        }
+
+        #sun.active,
+        #moon.active {
+            display: inline;
+
+            >* {
+                stroke: var(--textColor);
+            }
+        }
+
+        &:hover {
+            background-color: var(--hoverColor);
+        }
+    }
+
 }
 
 .quick {
@@ -97,7 +148,8 @@
     align-items: center;
 
     .text,
-    a span {
+    a span,
+    .themeMode label {
         display: none;
     }
 }

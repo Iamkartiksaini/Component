@@ -13,6 +13,42 @@ const Sidebar = () => {
         const doc = document.querySelector(".Sidebar")
         doc.classList.toggle("quick")
     }
+    const darkTheme = {
+        bg: "#09090A",
+        textColor: "#EFEFEF",
+        iconsColor: "#C8BCF6", commentText: "#b1b1b1", hoverColor: "#f5f5f512"
+    }
+    const lightTheme = {
+        bg: "#ffff",
+        textColor: "#09090A",
+        iconsColor: "#09090A", commentText: "#b1b1b1", hoverColor: "#8f8f8f87"
+    }
+    const toggletheme = () => {
+        const doc = document.querySelector(".themeMode")
+        const label = document.querySelector(".themeMode label")
+        const sun = document.querySelector(".themeMode #sun")
+        const moon = document.querySelector(".themeMode #moon")
+        const input = document.querySelector(".themeMode input")
+        const root = document.querySelector("#root");
+
+        doc.classList.toggle("active")
+        moon.classList.toggle("active")
+        sun.classList.toggle("active")
+        if (doc.classList.contains("active") === true) {
+            label.innerText = "Dark Mode"
+            root.style.setProperty("--bg", darkTheme.bg);
+            root.style.setProperty("--textColor", darkTheme.textColor);
+            root.style.setProperty("--iconsColor", darkTheme.iconsColor);
+            root.style.setProperty("--hoverColor", darkTheme.hoverColor);
+        }
+        else {
+            label.innerText = "Light Mode"
+            root.style.setProperty("--bg", lightTheme.bg);
+            root.style.setProperty("--textColor", lightTheme.textColor);
+            root.style.setProperty("--iconsColor", lightTheme.iconsColor);
+            root.style.setProperty("--hoverColor", lightTheme.hoverColor);
+        }
+    }
 
 
     return (
@@ -76,6 +112,24 @@ const Sidebar = () => {
 
             </div>
             <div className="bottom">
+                <div className="themeMode active" onClick={toggletheme}>
+                    <svg id='moon' className='active' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M17.9562 15.1359C16.4234 14.8673 14.8947 13.7416 13.9736 12.0223C12.8847 9.98963 12.9628 7.72039 14.0142 6.27944C14.122 6.13175 14.24 5.99276 14.368 5.86362C14.6149 5.61455 14.5435 5.14979 14.1963 5.09307C13.9699 5.05608 13.7399 5.02981 13.5067 5.01481C13.354 5.00499 13.2 5 13.0447 5C9.15403 5 6 8.13401 6 12C6 15.866 9.15403 19 13.0447 19C15.2587 19 17.2342 17.9852 18.5256 16.3981C18.6724 16.2178 18.8103 16.0301 18.9387 15.8356C19.1217 15.5585 18.8679 15.2066 18.5345 15.1961C18.3425 15.19 18.1493 15.1697 17.9562 15.1359Z" stroke="#C8BCF6" strokeWidth="1.5" />
+                    </svg>
+                    <svg id='sun' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="5" stroke="#C8BCF6" strokeWidth="1.5" />
+                        <path d="M12 19.5V22" stroke="#C8BCF6" strokeWidth="1.5" strokeLinecap="round" />
+                        <path d="M12 2V4.5" stroke="#C8BCF6" strokeWidth="1.5" strokeLinecap="round" />
+                        <path d="M4.5 12L2 12" stroke="#C8BCF6" strokeWidth="1.5" strokeLinecap="round" />
+                        <path d="M22 12L19.5 12" stroke="#C8BCF6" strokeWidth="1.5" strokeLinecap="round" />
+                        <path d="M17.3033 6.69678L19.0711 4.92901" stroke="#C8BCF6" strokeWidth="1.5" strokeLinecap="round" />
+                        <path d="M4.92894 19.0713L6.69671 17.3035" stroke="#C8BCF6" strokeWidth="1.5" strokeLinecap="round" />
+                        <path d="M17.3033 17.3032L19.0711 19.071" stroke="#C8BCF6" strokeWidth="1.5" strokeLinecap="round" />
+                        <path d="M4.92896 4.92896L6.69672 6.69672" stroke="#C8BCF6" strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
+
+                    <label htmlFor="theme">Dark Mode</label>
+                </div>
                 <a>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10 12L19 12M19 12L17 10M19 12L17 14M15 16L15 19C15 20.1046 14.1046 21 13 21L7 21C5.89543 21 5 20.1046 5 19L5 5C5 3.89543 5.89543 3 7 3L13 3C14.1046 3 15 3.89543 15 5L15 8" stroke="#1F1F22" strokeWidth="1.5" strokeLinecap="round" />
@@ -93,11 +147,11 @@ const Sidebar = () => {
             <span id='toggle' onClick={toggle}>
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="32" height="32" rx="8" fill="#C8BCF6" />
-                    <path d="M13 22L19.102 16.3674C19.3165 16.1694 19.3165 15.8306 19.102 15.6326L13 10" stroke="#09090A" stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M13 22L19.102 16.3674C19.3165 16.1694 19.3165 15.8306 19.102 15.6326L13 10" stroke="#09090A" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="32" height="32" rx="8" fill="#C8BCF6" />
-                    <path d="M19 10L12.898 15.6326C12.6835 15.8306 12.6835 16.1694 12.898 16.3674L19 22" stroke="#09090A" stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M19 10L12.898 15.6326C12.6835 15.8306 12.6835 16.1694 12.898 16.3674L19 22" stroke="#09090A" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
             </span>
         </div>
