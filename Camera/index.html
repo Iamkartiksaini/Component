@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camera Preview</title>
+</head>
+<body style="display:flex;flex-direction: column;justify-content: center;align-items: center;
+padding: 10px;">
+  <h1>Camera Preview</h1>
+  <button id="startButton">Start Camera</button>
+  <button id="stopButton" style="display: none;">Stop Camera</button>
+  <button id="switchButton" style="display: none;">Switch Camera</button>
+  <button id="captureButton" style="display: none;">Capture Image</button>
+  <button id="saveButton" style="display: none;">Save Image</button>
+  <video style="height: 90vh; width: 90vw;transform: rotateY(180deg);" id="videoElement" autoplay playsinline></video>
+  <canvas style="display: none;" id="canvasElement"></canvas>
+  <img style="display: none;" id="capturedImage"></img>
+
+  <script>
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+    const switchButton = document.getElementById('switchButton');
+    const captureButton = document.getElementById('captureButton');
+    const saveButton = document.getElementById('saveButton');
+    const videoElement = document.getElementById('videoElement');
+    const canvasElement = document.getElementById('canvasElement');
+    const capturedImage = document.getElementById('capturedImage');
+    let stream;
+    let currentCamera = 'environment'; // 'user' for front camera, 'environment' for back camera
+
+    async function getCameraStream(camera) {
+      const constraints = {
+        video: { facingMode: camera }
+      };
+      try {
+        stream = await navigator.mediaDevices.getUserMedia(constraints);
+        videoElement.srcObject = stream;
+        startButton.style.display = 'none';
+        stopButton.style.display = 'block';
+        switchButton.style.display = 'block';
+        captureButton.style.display = 'block';
+      } catch (error) {
+        console.error('Error accessing camera:', error);
+      }
+    }
+
+    startButton.addEventListener('click', () => {
+      getCameraStream(currentCamera);
+    });
+
+    stopButton.addEventListener('click', () => {
+      if (stream) {
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+        videoElement.srcObject = null;
+        startButton.style.display = 'block';
+        stopButton.style.display = 'none';
+        switchButton.style.display = 'none';
+        captureButton.style.display = 'none';
+        saveButton.style.display = 'none';
+      }
+    });
+
+    captureButton.addEventListener('click', () => {
+      if (stream && canvasElement) {
+        canvasElement.width = videoElement.videoWidth;
+        canvasElement.height = videoElement.videoHeight;
+        canvasElement.getContext('2d').drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+        capturedImage.src = canvasElement.toDataURL('image/png');
+        capturedImage.style.display = 'block';
+        saveButton.style.display = 'block';
+      }
+    });
+
+    saveButton.addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.href = capturedImage.src;
+      a.download = 'captured_image.png';
+      a.click();
+    });
+
+    switchButton.addEventListener('click', async () => {
+      if (currentCamera === 'user') {
+        currentCamera = 'environment';
+      } else {
+        currentCamera = 'user';
+      }
+      if (stream) {
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+      }
+      await getCameraStream(currentCamera);
+    });
+  </script>
+</body>
+</html>
