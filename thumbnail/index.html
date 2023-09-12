@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Screenshot Canvas</title>
+  </head>
+  <body>
+    <canvas id="screenshotCanvas" width="800" height="300"></canvas>
+    <button id="captureScreenshot">Capture Screenshot</button>
+    <input type="text" id="text" />
+    <button onclick="textChange()">Change text</button>
+
+    <script>
+      const canvas = document.getElementById("screenshotCanvas");
+      const context = canvas.getContext("2d");
+      const captureButton = document.getElementById("captureScreenshot");
+
+      // You can draw something on the canvas for demonstration purposes.
+      context.fillStyle = "lightblue";
+      context.fillRect(50, 50, 300, 200);
+      context.font = "24px Arial";
+      context.fillStyle = "black";
+      context.fillText("Screenshot Me!", 120, 150);
+
+      function textChange() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        const inp = document.getElementById("text");
+        context.fillStyle = "lightblue";
+        context.fillRect(50, 50, 300, 200);
+        context.font = "24px Arial";
+        context.fillStyle = "black";
+        context.fillText(inp.value, 120, 150);
+      }
+      // Event listener for capturing a screenshot
+      captureButton.addEventListener("click", () => {
+        // Create an image element and set its source to the canvas data
+        const screenshotImage = new Image();
+        screenshotImage.src = canvas.toDataURL("image/png");
+
+        // You can append the image to the document or do something else with it
+        document.body.appendChild(screenshotImage);
+
+        // Optional: You can also trigger a download of the screenshot
+        const a = document.createElement("a");
+        a.href = screenshotImage.src;
+        a.download = "screenshot.png";
+        a.click();
+      });
+    </script>
+  </body>
+</html>
