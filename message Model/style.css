@@ -1,0 +1,98 @@
+/* styles.scss */
+
+.floating-button-container {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 10;
+}
+
+.floating-button {
+  background-color: rgba(51, 51, 51, 0.36);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.floating-button:hover {
+  background-color: skyblue;
+}
+.floating-button:hover svg path,
+.floating-button:hover svg rect {
+  stroke: white;
+}
+.message-icon {
+  font-size: 20px;
+}
+.message-modal {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 400px;
+  background-color: #fff;
+  /* box-shadow: -1px 0px 5px rgba(0, 0, 0, 0.2); */
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.modal-header {
+  background-color: skyblue;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.receiver-name {
+  font-weight: bold;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.message-list {
+  padding: 20px;
+  overflow-y: scroll;
+  height: calc(100% - 150px);
+  background-color: aliceblue;
+}
+
+.message-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+  height: 50px;
+  background: skyblue;
+}
+input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+.modal-open {
+  right: 0;
+}
