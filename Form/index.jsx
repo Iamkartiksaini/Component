@@ -1,4 +1,4 @@
-"use client";
+"use client"; // if using next js
 
 import { useState, useLayoutEffect } from "react";
 
