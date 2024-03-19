@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG Grid Viewer</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    min-height: 100%;
+    background-color: aliceblue;
+      }
+      input {
+position: fixed;
+top:10px;
+left:50%;
+transform:translateX(-50%);
+        background-color: #23ab89;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .svg-container {
+        margin: 10px;
+margin-top:80px;
+border-top:3px dashed #DADADA;
+padding-top:20px;
+        display: flex;
+        flex-wrap: wrap;
+justify-content:space-between;
+        gap: 20px;
+      }
+
+      .svg-container img {
+        flex-basis: 100px;
+        height: 100px;
+        width: 100px;
+        object-fit: contain;
+        background-color: rgb(128 128 128 / 9%);
+        padding: 6px 24px;
+        border-radius: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="file" id="svgInput" accept="image/*,.svg" multiple />
+    <div id="svgGrid" class="svg-container"></div>
+
+    <script>
+      document
+        .getElementById("svgInput")
+        .addEventListener("change", handleFileSelect);
+
+      function imageClick(name) {
+        console.log("image name", name);
+        navigator.clipboard.writeText(name);
+      }
+      function handleFileSelect(event) {
+        const files = event.target.files;
+        const svgGrid = document.getElementById("svgGrid");
+        svgGrid.innerHTML = "";
+        for (const file of files) {
+          //   console.log("file index", index, file.name);
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const svgElement = document.createElement("img");
+            svgElement.src = e.target.result;
+            svgElement.addEventListener("click", () => imageClick(file.name));
+            svgGrid.appendChild(svgElement);
+          };
+
+          reader.readAsDataURL(file);
+        }
+      }
+    </script>
+  </body>
+</html>
