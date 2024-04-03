@@ -56,12 +56,12 @@ const Sidebar = () => {
     return (
         <div className='Sidebar'>
             <div className="logo">
-                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="56" height="56" rx="16" fill="#C8BCF6" />
                     <path d="M31.1172 19.8672V30.9531C31.1172 32.1484 30.8633 33.2188 30.3555 34.1641C29.8555 35.1094 29.0977 35.8594 28.082 36.4141C27.0664 36.9609 25.7891 37.2344 24.25 37.2344C22.0547 37.2344 20.3828 36.6602 19.2344 35.5117C18.0938 34.3555 17.5234 32.8203 17.5234 30.9062V19.8672H20.3359V30.6602C20.3359 32.0898 20.6719 33.1445 21.3438 33.8242C22.0156 34.5039 23.0195 34.8438 24.3555 34.8438C25.2773 34.8438 26.0273 34.6836 26.6055 34.3633C27.1914 34.0352 27.6211 33.5586 27.8945 32.9336C28.1758 32.3008 28.3164 31.5391 28.3164 30.6484V19.8672H31.1172ZM35.5 37V19.8672H38.3125V37H35.5Z" fill="#09090A" />
-                </svg>
+                </svg> */}
 
-                {/* <img height="40px" width="40px" src="" alt="" /> */}
+                <img height="40px" width="40px" src="favicon.ico" alt="" />
                 <div className="text">
                     <h2>
                         Kartik Saini
@@ -146,23 +146,9 @@ const Sidebar = () => {
                     <span>Setting</span>
                 </a>
             </div>
-            <span id='toggle' onClick={toggle}>
-
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="32" height="32" rx="8" fill="#C8BCF6" />
-                    <path d="M19 10L12.898 15.6326C12.6835 15.8306 12.6835 16.1694 12.898 16.3674L19 22" stroke="#09090A" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
-
-            </span>
+            <img id='toggle' onClick={toggle} src='right-arrow.png' height={16} width={16} alt='arrow' />
         </div>
     )
 }
 
 export default Sidebar
-
-{/* {navigations.map((val, ind) => {
-                    return <a href={val.link} key={ind}>
-                        <i>{val.icon}</i>
-                        <span>{val.text}</span>
-                    </a>
-                })} */}
