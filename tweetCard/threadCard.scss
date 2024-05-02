@@ -1,0 +1,195 @@
+.community-thread-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--bg);
+}
+
+.threadCard {
+    position: relative;
+    // background: var(--thread-bg);
+    border: 1px solid var(--hoverColor);
+    display: flex;
+    gap: 1rem;
+    text-decoration: none;
+    padding: 1rem 1rem .75rem 1rem;
+    color: var(--textColor);
+
+    .right-section {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .head {
+            h4 {
+                color: var(--textColor);
+            }
+
+            p {
+                color: var(--commentText);
+            }
+        }
+
+        pre {
+            color: var(--textColor);
+            white-space: pre-wrap;
+            font-family: "Inter var";
+            max-height: 600px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 25;
+            -webkit-box-orient: vertical;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1.5rem;
+            padding: 0.75rem 0px;
+            color: var(--iconsColor);
+
+            >div {
+                align-items: center;
+            }
+
+            i {
+                padding: .2rem .5rem;
+                border-radius: 4px;
+                transition: background-color .2s;
+                font-size: 1.25rem;
+
+                &:hover {
+                    background-color: var(--hoverColor);
+                }
+            }
+        }
+
+        .Add-Comment-Form {
+            position: fixed;
+            bottom: 0rem;
+            left: 0px;
+            background-color: var(--bg);
+            padding: 1rem;
+            padding-bottom: 2rem;
+            width: calc(100%);
+
+            p {
+                background-color: var(--hoverColor);
+                margin: .75rem 0rem;
+                padding: .75rem 1rem;
+                border-radius: .5rem;
+
+                i {
+                    margin: auto;
+                    float: right;
+                    padding: 0.25rem;
+                    transition: .2s;
+                    border-radius: 50%;
+
+                    &:hover {
+                        background-color: var(--iconsColor);
+                        color: var(--bg);
+                    }
+                }
+
+            }
+
+            .form-inputs {
+                display: flex;
+
+                textarea {
+                    transition: border-color .2s ease-in-out;
+                    background-color: transparent;
+                    color: var(--textColor);
+                    width: 100%;
+                    border-radius: 4px;
+                    border-color: var(--hoverColor);
+                    box-shadow: none;
+
+                    &:hover {
+                        border-color: var(--commentText);
+                    }
+                }
+
+                button {
+                    padding: auto 2rem;
+                    flex-shrink: 0;
+                    background-color: var(--purple-500);
+                }
+            }
+
+        }
+
+    }
+
+    .time-Options {
+        position: absolute;
+        right: 0.75rem;
+        top: 0.75rem;
+        width: max-content;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+
+        p {
+            font-size: .75rem;
+            color: var(--commentText);
+        }
+
+        .optionBtn {
+            padding: .25rem .75rem;
+            color: var(--iconsColor);
+            transition: color .2s;
+            border-radius: 4px;
+            font-size: 1.25rem;
+
+            &:hover {
+                background-color: var(--hoverColor);
+                color: var(--purple-500);
+            }
+        }
+    }
+
+    .comment {
+        width: 100%;
+        position: relative;
+        background-color: transparent;
+    }
+
+    &.full-mode {
+        position: relative;
+        padding-bottom: 5rem;
+
+        &::before {
+            content: "";
+            height: calc(100% - 82px - 6rem);
+            width: 1px;
+            background-color: var(--hoverColor);
+            position: absolute;
+            left: 16px;
+            top: 68px;
+            transform: translateX(20px);
+        }
+
+        .right-section pre {
+            max-height: 100%;
+            display: block;
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .threadCard {
+        width: 100%;
+        margin: .5rem 0;
+        padding-top: 2rem;
+
+
+        .actions span,
+        .actions li {
+            display: none;
+        }
+    }
+}
