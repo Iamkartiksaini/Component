@@ -1,0 +1,171 @@
+$border_color:#DADADA;
+
+.workspace {
+    opacity: 1;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    h4 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    h5 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        gap: 20px;
+        border-bottom: 1px solid $border_color;
+    }
+
+    .main {
+        display: flex;
+        justify-content: space-between;
+
+        .mainLeftSection {
+            display: flex;
+            flex-basis: 90%;
+
+            .AccordionTab {
+                width: 80px;
+                height: calc(600px + 3px);
+                transition: all .7s ease-in-out;
+                transform-origin: left center;
+
+                &.active {
+                    width: 450px;
+                }
+
+                &.fullView {
+                    width: 100%;
+                }
+
+                .AccordionTabHeader {
+                    border: 1px solid #DADADA;
+                    border-top: none;
+                    cursor: pointer;
+                    height: 100%;
+
+                    span {
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        i {
+                            margin-top: 15px;
+                            font-size: 1.2rem;
+                        }
+
+                        p {
+                            white-space: nowrap;
+                            transform-origin: center;
+                            rotate: 90deg;
+                            transform: translateX(100px);
+                            position: absolute;
+                            font-size: 1.2rem;
+                            text-transform: capitalize;
+                            font-weight: 600;
+                            letter-spacing: 2px;
+                        }
+                    }
+                }
+
+                .tabContent {
+                    .tabContentHeader {
+                        width: 0px;
+                        opacity: .3;
+                        padding: 10px;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        justify-content: space-between;
+                        align-items: center;
+                        border: 1px solid $border_color;
+                        border-top: none;
+                        cursor: pointer;
+                        overflow: hidden;
+                        transform-origin: left center;
+                        animation: opac .7s 1 forwards;
+
+                        .leftSection {
+                            display: flex;
+                            white-space: nowrap;
+                            gap: 15px;
+                            align-items: center;
+
+                            h4 {
+                                font-size: 1rem;
+                                font-weight: 600;
+                                letter-spacing: 2.2px;
+                                text-transform: capitalize;
+                            }
+
+                            i {
+                                font-size: 1.5rem;
+                            }
+
+                        }
+
+                        .rightSection {
+                            display: flex;
+                            gap: 15px;
+
+                            i {
+                                font-size: 1.2rem;
+                            }
+                        }
+
+                        @keyframes opac {
+                            to {
+                                width: 100%;
+                                opacity: 1;
+                                // background-color: aliceblue;
+                            }
+                        }
+                    }
+
+                    .tabContent_Data {
+                        height: 67vh;
+                        overflow-y: auto;
+                        border: 1px solid #dadada;
+                        border-top: none;
+                    }
+                }
+            }
+        }
+
+        .mainRightSection {
+            flex-basis: 10%;
+            display: flex;
+            justify-content: center;
+            // align-items: center;
+
+            .fullView_tab_item {
+                width: 100%;
+                text-align: center;
+                padding: 1.8rem 0rem;
+                border: 1px solid $border_color;
+                font-size: 1rem;
+                text-transform: capitalize;
+                font-weight: 600;
+                letter-spacing: 1.1px;
+                cursor: pointer;
+            }
+        }
+    }
+}

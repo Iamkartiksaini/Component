@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #06141d;
+  display: flex;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  justify-content: center;
+}
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tweet {
+  background-color: #1b2730;
+  width: 600px;
+  min-height: 100px;
+  padding: 1rem 1.2rem;
+  border-radius: 0.8rem;
+  display: flex;
+  gap: 1rem;
+  img {
+    border-radius: 50%;
+  }
+  .right {
+    color: white;
+    .top {
+      margin-top: 10px;
+      .info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        p {
+          font-weight: bold;
+        }
+        span,
+        li {
+          font-size: 0.8rem;
+          color: #686e73;
+        }
+      }
+    }
+    .content {
+      margin: 0.75rem 0rem;
+    }
+  }
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="workspace">
+      <header>
+        <p>Job ID:4562</p>
+        <h4>Software Engineering</h4>
+      </header>
+      <div class="main">
+        <div class="mainLeftSection">
+          <div class="AccordionTab active">
+            <div class="AccordionTabHeader">
+              <span>
+                <i class="pi pi-angle-down"></i>
+                <p>Section 1</p>
+              </span>
+            </div>
+            <div class="tabContent">
+              <div class="tabContentHeader">
+                <div class="leftSection">
+                  <h4>{sectionId}</h4>
+                </div>
+                <div class="rightSection">
+                  <i class="pi pi-search"></i>
+                  <i class="pi pi-filter"></i>
+                  <i class="pi pi-sort-amount-up"></i>
+                  <!-- The following icon is replaced with a button for simplicity -->
+                  <button
+                    class="pi pi-window-maximize"
+                    onclick="toggleFullView()"
+                  ></button>
+                </div>
+              </div>
+              <div class="tabContent_Data">tab Data</div>
+            </div>
+          </div>
+
+          <div class="AccordionTab">
+            <div class="AccordionTabHeader">
+              <span>
+                <i class="pi pi-angle-down"></i>
+                <p>Section 2</p>
+              </span>
+            </div>
+            <div class="tabContent">
+              <div class="tabContentHeader">
+                <div class="leftSection">
+                  <h4>{sectionId} 2</h4>
+                </div>
+                <div class="rightSection">
+                  <i class="pi pi-search"></i>
+                  <i class="pi pi-filter"></i>
+                  <i class="pi pi-sort-amount-up"></i>
+                  <!-- The following icon is replaced with a button for simplicity -->
+                  <button
+                    class="pi pi-window-maximize"
+                    onclick="toggleFullView()"
+                  ></button>
+                </div>
+              </div>
+              <div class="tabContent_Data">tab Data 2</div>
+            </div>
+          </div>
+          <div class="AccordionTab">
+            <div class="AccordionTabHeader">
+              <span>
+                <i class="pi pi-angle-down"></i>
+                <p>Section 3</p>
+              </span>
+            </div>
+            <div class="tabContent">
+              <div class="tabContentHeader">
+                <div class="leftSection">
+                  <h4>{sectionId} 3</h4>
+                </div>
+                <div class="rightSection">
+                  <i class="pi pi-search"></i>
+                  <i class="pi pi-filter"></i>
+                  <i class="pi pi-sort-amount-up"></i>
+                  <!-- The following icon is replaced with a button for simplicity -->
+                  <button
+                    class="pi pi-window-maximize"
+                    onclick="toggleFullView()"
+                  ></button>
+                </div>
+              </div>
+              <div class="tabContent_Data">tab Data 2</div>
+            </div>
+          </div>
+
+          <!-- Add Section button -->
+          <p class="m-3 text-red-400">+ Add Section</p>
+        </div>
+        <div class="mainRightSection">
+          <div class="mainRightSectionItemsList">
+            <div class="fullView_tab_item">Section 1</div>
+            <div class="fullView_tab_item">Section 2</div>
+            <div class="text-red-400 fullView_tab_item">+ Add Section</div>
+          </div>
+          <button
+            class="pi pi-trash text-red-500"
+            aria-label="Cancel"
+            style="
+              height: 100px;
+              width: 100px;
+              background: #ffad97;
+              border-color: #ffad97;
+            "
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>

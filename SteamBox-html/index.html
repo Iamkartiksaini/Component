@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Steam Box</title>
+  </head>
+  <body>
+    <div class="streamlinedBox">
+      <div class="sidebar">
+        <!-- Sidebar items -->
+        <!-- You would typically dynamically generate these items using JavaScript -->
+      </div>
+      <div class="overview">
+        <!-- Payment Status Chart -->
+        <div class="chart chartAnimation">
+          <h5>Payment Status</h5>
+          <p><span>121</span> Employees</p>
+          <div class="bar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <ul class="values">
+            <li>
+              <p>
+                <strong>68%</strong> <br />
+                successfully
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>17% </strong> <br />
+                Pending
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>15% </strong> <br />
+                Unpaid
+              </p>
+            </li>
+          </ul>
+        </div>
+        <!-- Latest Items -->
+        <div class="latest chartAnimation">
+          <div class="header">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="item_list"></div>
+          <div class="head">
+            <h5>Latest</h5>
+            <p>View All</p>
+          </div>
+          <ul class="list">
+            <!-- List of latest items -->
+            <!-- You would typically dynamically generate these items using JavaScript -->
+          </ul>
+        </div>
+      </div>
+      <div class="item_details">
+        <h5 id="mainText" class="slideInFromBottom">Heading</h5>
+        <p id="des" class="slideInFromBottom2">
+          Automate {sidebarItems[activeItemId - 1].name} and execute salary
+          payments in a few clicks. Get real time insights into headcount costs
+          and reduce payroll mistakes by keeping HR and payroll data in one
+          place.
+        </p>
+      </div>
+    </div>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js"></script>
+  </body>
+</html>

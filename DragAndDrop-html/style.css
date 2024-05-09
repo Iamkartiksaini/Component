@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 16px;
+}
+
+body {
+  background-color: aliceblue;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.workspace {
+  opacity: 1;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+  border-bottom: 1px solid #dadada;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mainLeftSection {
+  display: flex;
+  flex-basis: 90%;
+}
+
+.fullView_tab_item {
+  width: 100%;
+  text-align: center;
+  padding: 1.8rem 0rem;
+  border: 1px solid #dadada;
+  font-size: 1rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  letter-spacing: 1.1px;
+  cursor: pointer;
+}
+
+.AccordionTab:not(.active) {
+  width: 80px;
+  height: calc(600px + 3px);
+  transition: all 0.7s ease-in-out;
+  transform-origin: left center;
+}
+
+.AccordionTab.active:not(.fullView) {
+  width: 450px;
+}
+
+.AccordionTab.fullView {
+  width: 100%;
+}
+
+.AccordionTab.active .AccordionTabHeader {
+  display: none;
+}
+.AccordionTab:not(.active) .AccordionTabHeader {
+  border: 1px solid #dadada;
+  border-top: none;
+  cursor: pointer;
+  height: 100%;
+}
+.AccordionTab:not(.active) .AccordionTabHeader span {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.AccordionTab:not(.active) .AccordionTabHeader span i {
+  margin-top: 15px;
+  font-size: 1.2rem;
+}
+
+.AccordionTab:not(.active) .AccordionTabHeader span p {
+  white-space: nowrap;
+  transform-origin: center;
+  rotate: 90deg;
+  transform: translateX(100px);
+  position: absolute;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.AccordionTab:not(.active) .tabContent {
+  display: none;
+}
+.AccordionTab.active .tabContent .tabContentHeader {
+  width: 0px;
+  opacity: 0.3;
+  padding: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #dadada;
+  border-top: none;
+  cursor: pointer;
+  overflow: hidden;
+  transform-origin: left center;
+  animation: opac 0.7s 1 forwards;
+}
+
+@keyframes opac {
+  to {
+    width: 100%;
+    opacity: 1;
+    /* background-color: aliceblue; */
+  }
+}
+.tabContent_Data {
+  height: 67vh;
+  overflow-y: auto;
+  border: 1px solid #dadada;
+  border-top: none;
+}
+.leftSection {
+  display: flex;
+  white-space: nowrap;
+  gap: 15px;
+  align-items: center;
+}
+
+.leftSection h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: capitalize;
+}
+
+.leftSection i {
+  font-size: 1.5rem;
+}
+.rightSection {
+  display: flex;
+  gap: 15px;
+}
+.rightSection i {
+  font-size: 1.2rem;
+}
+
+.mainRightSection {
+  flex-basis: 10%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.mainRightSection:not(.fullView) .mainRightSectionItemsList {
+  display: none;
+}
