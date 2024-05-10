@@ -1,60 +1,11 @@
-const style = {
-  streamlinedBox: "streamlinedBox",
-  sidebar: "sidebar",
-  active: "active",
-  overview: "overview",
-  chart: "chart",
-  chartAnimation: "chartAnimation",
-  bar: "bar",
-  values: "values",
-  latest: "latest",
-  header: "header",
-  item_list: "item_list",
-  head: "head",
-  list: "list",
-  item: "item",
-  left: "left",
-  name: "name",
-  right: "right",
-  status: "status",
-  slideInFromBottom: "slideInFromBottom",
-  slideInFromBottom2: "slideInFromBottom2",
-};
-
+const char = document.querySelector(`.chart`);
+const latest = document.querySelector(`.latest`);
 const h5Ele = document.getElementById("mainText");
 const pEle = document.getElementById("des");
 
 let activeTab = 1;
 let click = "zero";
 
-function handleItemClick(itemId) {
-  if (click !== "zero") return;
-
-  requestAnimationFrame(working);
-  function working() {
-    const allEle = document.querySelectorAll(".sideBarItem");
-    allEle[activeTab - 1].classList.remove("active");
-    allEle[itemId - 1].classList.add("active");
-    const char = document.querySelector(`.chart`);
-    const latest = document.querySelector(`.latest`);
-    char.classList.add("chartAnimation");
-    latest.classList.add("chartAnimation");
-    h5Ele.classList.add("slideInFromBottom");
-    pEle.classList.add("slideInFromBottom2");
-    click = "one";
-    activeTab = itemId;
-
-    setTimeout(() => {
-      char.classList.remove("chartAnimation");
-      latest.classList.remove("chartAnimation");
-      h5Ele.classList.remove("slideInFromBottom");
-      pEle.classList.remove("slideInFromBottom2");
-      click = "zero";
-    }, 1000);
-  }
-}
-
-// Sample data (replace with your actual data)
 const sidebarItems = [
   { name: "People", id: 1 },
   { name: "Payroll", id: 2 },
@@ -96,7 +47,6 @@ const itemsData = [
   },
 ];
 
-// Function to generate HTML elements based on data
 function generateSidebarItems() {
   return sidebarItems
     .map(
@@ -135,11 +85,44 @@ function generateItemsData() {
     .join("");
 }
 
-// Use these functions to generate HTML dynamically
 const sidebarHTML = generateSidebarItems();
 const itemsHTML = generateItemsData();
 
-// Then, you can insert the generated HTML into your DOM elements
-// For example:
 document.querySelector(".sidebar").innerHTML = sidebarHTML;
 document.querySelector(".list").innerHTML = itemsHTML;
+
+const allEle = document.querySelectorAll(".sideBarItem");
+
+function handleItemClick(itemId) {
+  if (click !== "zero") return;
+
+  requestAnimationFrame(working);
+
+  function working() {
+    allEle[activeTab - 1]?.classList.remove("active");
+    allEle[itemId - 1].classList.add("active");
+
+    char.classList.add("chartAnimation");
+    latest.classList.add("chartAnimation");
+    h5Ele.classList.add("slideInFromBottom");
+    pEle.classList.add("slideInFromBottom2");
+
+    click = "one";
+    activeTab = itemId;
+
+    setTimeout(() => {
+      char.classList.remove("chartAnimation");
+      latest.classList.remove("chartAnimation");
+      h5Ele.classList.remove("slideInFromBottom");
+      pEle.classList.remove("slideInFromBottom2");
+      click = "zero";
+    }, 1000);
+  }
+}
+
+setTimeout(() => {
+  char.classList.remove("chartAnimation");
+  latest.classList.remove("chartAnimation");
+  h5Ele.classList.remove("slideInFromBottom");
+  pEle.classList.remove("slideInFromBottom2");
+}, 500);

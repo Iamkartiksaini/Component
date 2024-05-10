@@ -1,3 +1,4 @@
+// Thread App
 "use client"
 import "@/styles/threadCard.scss"
 import CustomUserRoundProfileImage from '@/utils/custom-user-image'

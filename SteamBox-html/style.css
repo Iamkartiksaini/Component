@@ -58,6 +58,10 @@ body {
       cursor: pointer;
       user-select: none;
     }
+
+    p:hover {
+      color: white;
+    }
     p.active {
       padding: 5px 20px;
       background-color: var(--bg-color-2);

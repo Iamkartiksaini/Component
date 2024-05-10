@@ -4,19 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SVG Grid Viewer</title>
+  </head>
+  <body>
+    <input type="file" id="svgInput" accept="image/*,.svg" multiple />
+    <div id="svgGrid" class="svg-container"></div>
+
     <style>
       body {
         display: flex;
         flex-direction: column;
         gap: 20px;
-    min-height: 100%;
-    background-color: aliceblue;
+        min-height: 100%;
+        background-color: aliceblue;
       }
       input {
-position: fixed;
-top:10px;
-left:50%;
-transform:translateX(-50%);
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
         background-color: #23ab89;
         color: white;
         padding: 20px;
@@ -25,12 +30,12 @@ transform:translateX(-50%);
 
       .svg-container {
         margin: 10px;
-margin-top:80px;
-border-top:3px dashed #DADADA;
-padding-top:20px;
+        margin-top: 80px;
+        border-top: 3px dashed #dadada;
+        padding-top: 20px;
         display: flex;
         flex-wrap: wrap;
-justify-content:space-between;
+        justify-content: space-between;
         gap: 20px;
       }
 
@@ -44,11 +49,6 @@ justify-content:space-between;
         border-radius: 14px;
       }
     </style>
-  </head>
-  <body>
-    <input type="file" id="svgInput" accept="image/*,.svg" multiple />
-    <div id="svgGrid" class="svg-container"></div>
-
     <script>
       document
         .getElementById("svgInput")
