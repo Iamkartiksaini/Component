@@ -1,33 +1,53 @@
 const applicantArray = [
   {
-    id: 1,
     title: "Huma Therman",
     companyName: "Codinglimits Pvt Ltd.",
     address: "Haryana",
   },
   {
-    id: 2,
     title: "John Doe",
     companyName: "Tech Innovators Inc.",
     address: "Bangalore",
   },
   {
-    id: 3,
     title: "Alice Smith",
     companyName: "Infinite Coders Ltd.",
     address: "Delhi",
   },
   {
-    id: 4,
     title: "Bob Johnson",
     companyName: "TechSolutions Co.",
     address: "Mumbai",
   },
   {
-    id: 5,
     title: "Samantha Lee",
     companyName: "Digital Innovations Ltd.",
     address: "Chennai",
+  },
+  {
+    title: "Michael Jordan",
+    companyName: "Sports Gear Inc.",
+    address: "Chicago",
+  },
+  {
+    title: "Emma Watson",
+    companyName: "Creative Minds Co.",
+    address: "London",
+  },
+  {
+    title: "Alex Rodriguez",
+    companyName: "Data Solutions Ltd.",
+    address: "New York",
+  },
+  {
+    title: "Sophia Garcia",
+    companyName: "Tech Innovations Ltd.",
+    address: "Mexico City",
+  },
+  {
+    title: "Daniel Kim",
+    companyName: "Innovative Creations Inc.",
+    address: "Seoul",
   },
 ];
 
@@ -42,6 +62,7 @@ const sectionsArray = {
 };
 
 let activeTab = 0;
+let draggingOverItemIndex = 0;
 
 const mainLeftSection = document.getElementById("mainLeftSection");
 
@@ -76,7 +97,11 @@ mainLeftSection.innerHTML = Object.keys(sectionsArray)
     <div data-list-conatiner="${sectionId}" class="tabContent_Data">
     ${sectionsArray[sectionId]
       .map((item, index) => {
-        return `<div draggable="true" ondragstart="dragStart(event, ${index}, '${sectionId}')" class="item" data-item-index="${index}" data-item-section="${sectionId}">
+        return `<div draggable="true" ondragstart="dragStart(event, ${index}, '${sectionId}')"
+        ondragover="mouseOverHandler(event,${index}, '${sectionId}')"   
+        class="item"
+           data-item-index="${index}"
+           data-item-section="${sectionId}">
                   <h3>${item.title}</h3>
                   <p>${item.companyName}</p>
                 </div>`;
@@ -129,12 +154,21 @@ const handleDrop = (e, tab) => {
 
   const { index, sectionId } = parseData;
 
-  updateArrays({
-    obj: sectionsArray,
-    from: sectionId,
-    itemIndex: index,
-    to: droppingTo,
-  });
+  if (sectionId === droppingTo) {
+    reOrderArray({
+      obj: sectionsArray,
+      from: sectionId,
+      draggingItemIndex: index,
+      dropOverIndex: draggingOverItemIndex,
+    });
+  } else {
+    updateArrays({
+      obj: sectionsArray,
+      from: sectionId,
+      to: droppingTo,
+      itemIndex: index,
+    });
+  }
 };
 
 function updateArrays({ obj, from, to, itemIndex }) {
@@ -145,14 +179,30 @@ function updateArrays({ obj, from, to, itemIndex }) {
   reMapping(from);
 }
 
+function reOrderArray({ obj, from, draggingItemIndex, dropOverIndex }) {
+  const shiftData = obj[from][draggingItemIndex];
+  obj[from].splice(draggingItemIndex, 1);
+  obj[from].splice(dropOverIndex, 0, shiftData);
+  reMapping(from);
+}
+
 function reMapping(to) {
   const droppingTo = document.querySelector(`[data-list-conatiner="${to}"]`);
   return (droppingTo.innerHTML = sectionsArray[to]
     .map((item, index) => {
-      return `<div draggable="true" ondragstart="dragStart(event, ${index}, '${to}')" class="item" data-item-index="${index}" data-item-section="${to}">
+      return `<div draggable="true" ondragstart="dragStart(event, ${index}, '${to}')" 
+      ondragover="mouseOverHandler(event,${index}, '${to}')"   
+        class="item"
+        data-item-index="${index}"
+        data-item-section="${to}">
                 <h3>${item.title}</h3>
                 <p>${item.companyName}</p>
               </div>`;
     })
     .join(""));
+}
+
+function mouseOverHandler(event, overThisItem) {
+  event.preventDefault();
+  draggingOverItemIndex = overThisItem;
 }

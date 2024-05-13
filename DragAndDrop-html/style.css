@@ -18,7 +18,7 @@ p {
 }
 
 body {
-  background-color: aliceblue;
+  background-color: rgb(215, 249, 247);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .workspace {
@@ -32,19 +32,25 @@ header {
   align-items: center;
   padding: 10px;
   gap: 20px;
+  height: 48px;
   border-bottom: 1px solid #dadada;
 }
 
 .main {
   display: flex;
   justify-content: space-between;
+  height: calc(100vh - 48px);
 }
 
 .mainLeftSection {
   display: flex;
+  height: 100%;
   flex-basis: 90%;
 }
 
+.AccordionTab {
+  height: 100%;
+}
 .fullView_tab_item {
   width: 100%;
   text-align: center;
@@ -59,7 +65,7 @@ header {
 
 .AccordionTab:not(.active) {
   width: 80px;
-  height: calc(600px + 3px);
+  /* height: calc(600px + 3px); */
   transition: all 0.7s ease-in-out;
   transform-origin: left center;
 }
@@ -131,7 +137,7 @@ header {
   }
 }
 .tabContent_Data {
-  height: 67vh;
+  height: calc(100vh - 90px);
   overflow-y: auto;
   border: 1px solid #dadada;
   border-top: none;
@@ -142,9 +148,11 @@ header {
 }
 .tabContent_Data .item {
   padding: 1rem 0.5rem;
-
-  border: 1px solid #535353;
-  border-radius: 4px;
+  box-shadow: 0 0 0.2rem #535353;
+  border-radius: 8px;
+  color: white;
+  background-color: #f4d03f;
+  background-image: linear-gradient(222deg, #f4d03f 0%, #16a085 100%);
 }
 .leftSection {
   display: flex;
@@ -169,4 +177,20 @@ header {
 
 .mainRightSection:not(.fullView) .mainRightSectionItemsList {
   display: none;
+}
+.deleteBtn {
+  height: 100px;
+  width: 100px;
+  background: #ffad97;
+  border-color: #ffad97;
+  border-radius: 50%;
+  border: none;
+  margin: auto 0;
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+}
+.deleteBtn:hover {
+  box-shadow: 0 0 0.3rem orange;
+  background-color: red;
+  color: white;
 }
