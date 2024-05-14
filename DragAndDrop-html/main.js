@@ -1,58 +1,3 @@
-const applicantArray = [
-  {
-    title: "Huma Therman",
-    companyName: "Codinglimits Pvt Ltd.",
-    address: "Haryana",
-  },
-  {
-    title: "John Doe",
-    companyName: "Tech Innovators Inc.",
-    address: "Bangalore",
-  },
-  {
-    title: "Alice Smith",
-    companyName: "Infinite Coders Ltd.",
-    address: "Delhi",
-  },
-  {
-    title: "Bob Johnson",
-    companyName: "TechSolutions Co.",
-    address: "Mumbai",
-  },
-  {
-    title: "Samantha Lee",
-    companyName: "Digital Innovations Ltd.",
-    address: "Chennai",
-  },
-  {
-    title: "Michael Jordan",
-    companyName: "Sports Gear Inc.",
-    address: "Chicago",
-  },
-  {
-    title: "Emma Watson",
-    companyName: "Creative Minds Co.",
-    address: "London",
-  },
-  {
-    title: "Alex Rodriguez",
-    companyName: "Data Solutions Ltd.",
-    address: "New York",
-  },
-  {
-    title: "Sophia Garcia",
-    companyName: "Tech Innovations Ltd.",
-    address: "Mexico City",
-  },
-  {
-    title: "Daniel Kim",
-    companyName: "Innovative Creations Inc.",
-    address: "Seoul",
-  },
-];
-
-//Mapping Sections
-
 const sectionsArray = {
   ["Screen Select"]: applicantArray,
   [`Interview L1`]: [],
@@ -74,24 +19,19 @@ mainLeftSection.innerHTML = Object.keys(sectionsArray)
     }">
   <div class="AccordionTabHeader">
     <span>
-      <i class="pi pi-angle-down"></i>
       <p>${sectionId}</p>
     </span>
   </div>
   <div class="tabContent">
-    <div class="tabContentHeader">
+    <div ondblclick="toggleFullView(${ind})" class="tabContentHeader">
       <div class="leftSection">
         <h4>${sectionId}</h4>
       </div>
       <div class="rightSection">
-        <i class="pi pi-search"></i>
-        <i class="pi pi-filter"></i>
-        <i class="pi pi-sort-amount-up"></i>
         <!-- The following icon is replaced with a button for simplicity -->
-        <button
-          class="pi pi-window-maximize"
-          onclick="toggleFullView()"
-        ></button>
+        <button id="viewBtn"
+          onclick="toggleFullView(${ind})"
+        >resize-width</button>
       </div>
     </div>
     <div data-list-conatiner="${sectionId}" class="tabContent_Data">
@@ -114,6 +54,7 @@ mainLeftSection.innerHTML = Object.keys(sectionsArray)
   .join("");
 
 const accordionTab = document.querySelectorAll(".AccordionTab");
+const accordionTabHeader = document.querySelectorAll(".AccordionTabHeader");
 
 // Attaching addEventListeners HTML
 accordionTab.forEach((tab, ind) => {
@@ -126,11 +67,16 @@ accordionTab.forEach((tab, ind) => {
   tab.addEventListener("click", (e) => {
     if (tab.classList.contains("active")) return;
     accordionTab.forEach((tb, ind) => {
+      tb.classList.remove("fullView");
       tb.classList.remove("active");
     });
     tab.classList.add("active");
   });
 });
+
+const toggleFullView = (index) => {
+  accordionTab[index].classList.toggle("fullView");
+};
 
 function dragStart(event, index, sectionId) {
   try {

@@ -16,30 +16,43 @@ h5 {
 p {
   font-size: 16px;
 }
+:root {
+  --header-height: 60px;
+  --sub-header-height: 42px;
+  --header-background: #83838330;
+
+  --main-background-color: #375e96;
+  --border-color: #70c3bb4f;
+  --primary-color: white;
+  --secondary-color: rgb(249, 164, 53);
+
+  --items-background-color: #ffffff30;
+  --items-background-image: #ffffff30;
+  --items-box-shadow: 0 0 0.2rem #fff;
+}
 
 body {
-  background-color: rgb(215, 249, 247);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--main-background-color);
+  color: var(--primary-color);
 }
-.workspace {
-  opacity: 1;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 header {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 10px;
   gap: 20px;
-  height: 48px;
-  border-bottom: 1px solid #dadada;
+  color: var(--primary-color);
+  height: var(--header-height);
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--header-background);
 }
 
 .main {
   display: flex;
   justify-content: space-between;
-  height: calc(100vh - 48px);
+  height: calc(100vh - var(--header-height));
 }
 
 .mainLeftSection {
@@ -50,12 +63,13 @@ header {
 
 .AccordionTab {
   height: 100%;
+  transition: width 0.3s ease-in-out;
 }
 .fullView_tab_item {
   width: 100%;
   text-align: center;
   padding: 1.8rem 0rem;
-  border: 1px solid #dadada;
+  border: 1px solid var(--border-color);
   font-size: 1rem;
   text-transform: capitalize;
   font-weight: 600;
@@ -82,10 +96,10 @@ header {
   display: none;
 }
 .AccordionTab:not(.active) .AccordionTabHeader {
-  border: 1px solid #dadada;
+  border: 1px solid var(--border-color);
   border-top: none;
-  cursor: pointer;
   height: 100%;
+  cursor: pointer;
 }
 .AccordionTab:not(.active) .AccordionTabHeader span {
   position: relative;
@@ -121,12 +135,21 @@ header {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #dadada;
+  border: 1px solid var(--border-color);
   border-top: none;
   cursor: pointer;
   overflow: hidden;
+  height: var(--sub-header-height);
   transform-origin: left center;
   animation: opac 0.7s 1 forwards;
+  #viewBtn {
+    border: none;
+    padding: 3px 6px;
+    background-color: var(--border-color);
+    color: var(--primary-color);
+    border-radius: 4px;
+    cursor: w-resize;
+  }
 }
 
 @keyframes opac {
@@ -137,22 +160,38 @@ header {
   }
 }
 .tabContent_Data {
-  height: calc(100vh - 90px);
+  height: calc(100vh - var(--header-height) - var(--sub-header-height));
   overflow-y: auto;
-  border: 1px solid #dadada;
+  border: 1px solid var(--border-color);
   border-top: none;
   padding: 1rem 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
+
+.tabContent_Data::-webkit-scrollbar {
+  background-color: var(--header-background);
+  width: 8px;
+}
+.tabContent_Data::-webkit-scrollbar-thumb {
+  color: var(--primary-color);
+  background-color: var(--primary-color);
+  border-radius: 1rem;
+}
+.tabContent_Data::-webkit-scrollbar-thumb:hover {
+  background-color: var(--secondary-color);
+}
+
 .tabContent_Data .item {
+  cursor: grab;
+  white-space: none;
   padding: 1rem 0.5rem;
-  box-shadow: 0 0 0.2rem #535353;
+  box-shadow: var(--items-box-shadow);
   border-radius: 8px;
-  color: white;
-  background-color: #f4d03f;
-  background-image: linear-gradient(222deg, #f4d03f 0%, #16a085 100%);
+  color: var(--primary-color);
+  background-color: var(--items-background-color);
+  background-image: var(--items-background-image);
 }
 .leftSection {
   display: flex;
@@ -192,5 +231,5 @@ header {
 .deleteBtn:hover {
   box-shadow: 0 0 0.3rem orange;
   background-color: red;
-  color: white;
+  color: var(--primary-color);
 }
