@@ -18,28 +18,28 @@ const sidebarItems = [
 
 const itemsData = [
   {
-    imageSrc: "./thread-ux.png",
+    imageSrc: "./download.png",
     name: "John Doe",
     role: "Role 1",
     status: "success",
     amount: "$100",
   },
   {
-    imageSrc: "./thread-ux.png",
+    imageSrc: "./download.png",
     name: "Jane Doe",
     role: "Role 2",
     status: "pending",
     amount: "$200",
   },
   {
-    imageSrc: "./thread-ux.png",
+    imageSrc: "./download.png",
     name: "Kartik Saini",
     role: "Role 3",
     status: "unpaid",
     amount: "$100",
   },
   {
-    imageSrc: "./thread-ux.png",
+    imageSrc: "./download.png",
     name: "Robert",
     role: "Role 2",
     status: "pending",
