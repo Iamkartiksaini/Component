@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background-color: radial-gradient(at center, #252525, cyan, blue);
+  background-color: #252525;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
