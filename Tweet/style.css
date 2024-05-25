@@ -15,38 +15,55 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 .tweet {
   background-color: #1b2730;
-  width: 600px;
+  flex-basis: 50%;
+  flex-grow: 1;
+  max-width: calc(100% - 2rem);
   min-height: 100px;
   padding: 1rem 1.2rem;
   border-radius: 0.8rem;
-  display: flex;
-  gap: 1rem;
-  img {
-    border-radius: 50%;
-  }
-  .right {
-    color: white;
-    .top {
-      margin-top: 10px;
-      .info {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        p {
-          font-weight: bold;
-        }
-        span,
-        li {
-          font-size: 0.8rem;
-          color: #686e73;
-        }
+  color: white;
+  .head {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .text {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      p {
+        margin: 0;
+        font-weight: bold;
+      }
+
+      span {
+        color: #666;
+      }
+
+      li {
+        font-size: 0.7rem;
+        color: #999;
+        /* list-style: none; */
+        margin: 0;
       }
     }
-    .content {
-      margin: 0.75rem 0rem;
-    }
+  }
+
+  .right {
+    /* white-space: pre-wrap; */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin-top: 1rem;
   }
 }
