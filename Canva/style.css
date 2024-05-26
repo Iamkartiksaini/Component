@@ -5,6 +5,7 @@
 }
 body {
   background-color: #252525;
+  color: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -14,12 +15,16 @@ h1 {
   text-align: center;
   font-weight: bolder;
 }
+body > p {
+  text-align: center;
+}
 .gallery {
   margin: 40px auto;
   width: 90%;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  ---width-and-gap: calc(100% / 2 - 1rem);
 }
 
 .gallery .card {
@@ -40,6 +45,7 @@ h1 {
     flex-direction: row;
     background-color: white;
     position: absolute;
+    color: black;
     width: 100%;
     bottom: -100%;
     left: 0px;
@@ -98,6 +104,14 @@ h1 {
     transition: 0.3s ease-in;
     object-fit: contain;
   }
+}
+.card:nth-of-type(5n) {
+  flex-basis: var(---width-and-gap);
+  background-color: grey;
+}
+.card:nth-of-type(5n - 1) {
+  flex-basis: var(---width-and-gap);
+  background-color: cadetblue;
 }
 
 .gallery .card:hover {
