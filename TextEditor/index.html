@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Editor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="editor-container">
+      <div id="toolbar">
+        <button onclick="execCmd('bold')">Bold</button>
+        <button onclick="execCmd('italic')">Italic</button>
+        <button onclick="execCmd('underline')">Underline</button>
+        <button onclick="execCmd('justifyLeft')">Align Left</button>
+        <button onclick="execCmd('justifyCenter')">Align Center</button>
+        <button onclick="execCmd('justifyRight')">Align Right</button>
+        <button onclick="execCmd('justifyFull')">Justify</button>
+        <button onclick="execCmd('insertOrderedList')">Numbered List</button>
+        <button onclick="execCmd('insertUnorderedList')">Bullet List</button>
+        <button onclick="execCmd('insertHorizontalRule')">
+          Horizontal Line
+        </button>
+        <button onclick="execCmd('selectAll')">Select All</button>
+        <button onclick="execCmd('undo')">Undo</button>
+        <button onclick="execCmd('redo')">Redo</button>
+      </div>
+      <div id="editor" contenteditable="true">
+        <p>Type your text here...</p>
+      </div>
+    </div>
+    <style>
+      .editor-container {
+        width: 80%;
+        margin: 20px auto;
+      }
+
+      #toolbar {
+        margin-bottom: 10px;
+      }
+
+      #toolbar button {
+        margin-right: 5px;
+      }
+
+      #editor {
+        border: 1px solid #ccc;
+        padding: 10px;
+        min-height: 200px;
+      }
+    </style>
+    <script>
+      function execCmd(command) {
+        document.execCommand(command, false, null);
+      }
+      console.log(document.execCommand("bold"));
+    </script>
+  </body>
+</html>
