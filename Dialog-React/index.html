@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dialog</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button id="open">Open Dialog</button>
+    <dialog id="dialog">
+      <h1>Hello</h1>
+      <button id="close">close</button>
+    </dialog>
+
+    <script>
+      (() => {
+        const ele = document.getElementById("dialog");
+        const btnClose = document.getElementById("close");
+        const btnOpen = document.getElementById("open");
+
+        btnClose.addEventListener("click", () => {
+          ele.close();
+        });
+        btnOpen.addEventListener("click", () => {
+          ele.showModal();
+        });
+      })();
+    </script>
+  </body>
+</html>

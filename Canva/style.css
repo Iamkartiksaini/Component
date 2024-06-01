@@ -7,12 +7,13 @@
 body {
   --main-text-color: black;
   --main-bg-color: white;
+  --card-width: 500px;
+  --light-bg: #d3d3d32e;
   /* background-color: #252525; */
   color: var(--main-text-color);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   gap: 2rem;
-  padding: 2rem;
 }
 
 h1 {
@@ -21,37 +22,95 @@ h1 {
   text-align: center;
   font-weight: bolder;
 }
-/* body > p {
-  text-align: center;
-} */
 
 aside {
   display: grid;
+  --gap: 1rem;
+  padding: 2rem;
 
+  position: relative;
   .card {
     cursor: pointer;
-    background-color: cyan;
     margin-top: 10px;
     padding: 0.25rem 1rem;
+    padding: 1rem;
     border-radius: 0.25rem;
+    transition: color 0.1s ease-in-out;
+    h2 {
+      width: var(--card-width);
+      font-weight: bolder;
+    }
+    p {
+      width: var(--card-width);
+    }
+    &:hover,
+    &.active {
+      color: rgb(74, 159, 255);
+    }
   }
 }
 .contentCard {
-  /* display: none; */
+  display: none;
   position: absolute;
   opacity: 0;
-  transition: 0.2s ease-in-out;
-  left: 300px;
+  transition: 0.5s ease-in-out, color 0.1s ease-in;
+  padding: 0.5rem;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  min-height: 300px;
+  transform-origin: center right;
+  transform: translateX(calc(100% + var(--gap)));
+  gap: 1rem;
+  right: 0px;
+  top: var(--gap);
+  width: calc(95vw - 100%);
+  background-color: var(--light-bg);
+  border-radius: 1rem;
+  scale: 0.5;
+  img {
+    height: auto;
+    width: 300px;
+    width: calc(100% - var(--card-width));
+  }
+  p {
+    font-size: 1.5rem;
+    font-weight: bolder;
+  }
+}
+aside:not(:hover) {
+  .card[data-card="1"] {
+    color: rgb(74, 159, 255);
+    background-color: var(--light-bg);
+    .contentCard {
+      display: flex;
+      animation: opa 0.5s 1 forwards;
+    }
+  }
 }
 
-aside:hover .card[data-card="1"]:hover ~ .contentCard[data-card-image="1"] {
-  opacity: 1;
+aside:hover {
+  .card:nth-of-type(1) {
+    .contentCard {
+      display: none;
+    }
+  }
 }
 
-aside:hover .card[data-card="2"]:hover ~ .contentCard[data-card-image="2"] {
-  opacity: 1;
-}
+aside {
+  .card:nth-of-type(n):hover {
+    color: rgb(74, 159, 255);
+    background-color: var(--light-bg);
 
-aside:hover .card[data-card="3"]:hover ~ .contentCard[data-card-image="3"] {
-  opacity: 1;
+    .contentCard {
+      display: flex;
+      animation: opa 0.5s 1 forwards;
+    }
+  }
+}
+@keyframes opa {
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
 }
