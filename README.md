@@ -35,3 +35,5 @@
 17. **thumbnail**: Adds canvas screenshot functionality for thumbnails.
 
 18. **tweetCard repository**: Repository dedicated to a tweet card component.
+
+19. **Text Editor repository**: Repository dedicated to a tweet card component.
