@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: whitesmoke;
+  color: white;
+  display: flex;
+  position: relative;
+  padding: 10px;
+  backdrop-filter: blur(15px);
+  flex-direction: column;
+  gap: 10px;
+  height: calc(100vh * 10);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("../SteamBox-html/bg.jpg");
+  background-size: contain;
+  background-repeat: no-repeat repeat;
+}
+
+a {
+  color: red;
+  font-size: 2rem;
+}
+
+.ScrollTrigger {
+  position: sticky;
+  /* background-color: rgba(138, 255, 222, 0.423); */
+  height: 100vh;
+  width: 80%;
+  top: 10px;
+  --init-height: 70px;
+  /* animation: scaleUp linear both;
+  animation-timeline: view(block);
+  animation-range: cover 0% cover 100%; */
+}
+.box {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  left: 0%;
+  top: 2rem;
+  background-color: cadetblue;
+  animation: Ani linear;
+  animation-timeline: scroll(root);
+  animation-range: contain 0% cover 100%;
+}
+.start {
+  padding: 10px;
+  position: absolute;
+  top: 0px;
+  left: 100%;
+  border-top: 2px solid red;
+  animation: travel linear;
+  animation-timeline: view(block);
+  animation-range: contain 40px cover 100%;
+}
+.end {
+  padding: 10px;
+  position: absolute;
+  bottom: 0px;
+  left: 100%;
+  border-bottom: 2px solid red;
+}
+.ScrollTrigger::before {
+  content: "";
+  top: 0px;
+  left: 0%;
+  height: 10px;
+  width: 5px;
+  border-radius: 2rem;
+  position: absolute;
+  /* background-color: #a4508b; */
+  background-image: linear-gradient(to bottom, #a4508b, #5f0a87 74%);
+  transform-origin: top center;
+  animation: scaleUp linear;
+  animation-timeline: scroll(root);
+  animation-range: cover 0% cover 100%;
+}
+
+.textContainer {
+  /* position: absolute; */
+  top: 0px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-end; */
+  height: 100vh;
+  margin-top: 100vh;
+  h3,
+  p {
+    text-align: center;
+    animation: scaleAni forwards;
+    animation-timeline: view(block);
+    animation-range: cover -50px contain 50%;
+    font-weight: bolder;
+    transition: 0.2s ease-in-out;
+  }
+}
+@keyframes scaleUp {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+    /* height: calc(100% + var(--init-height)); */
+  }
+}
+
+@keyframes travel {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes Ani {
+  0% {
+    border-radius: 0%;
+    left: 0%;
+    rotate: 0deg;
+  }
+  90% {
+    background-color: #5f0a87;
+  }
+  100% {
+    border-radius: 50%;
+    left: calc(100% - 100px);
+    rotate: 720deg;
+    background-color: green;
+  }
+}
+
+@keyframes scaleAni {
+  0% {
+    /* transform: translateX(-100%); */
+    scale: 0;
+    /* background-color: rgb(252, 112, 213); */
+  }
+  100% {
+    /* transform: translateX(0%); */
+    scale: 1;
+  }
+}
