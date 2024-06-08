@@ -9,7 +9,7 @@ html {
 
 body {
   background-color: whitesmoke;
-  color: white;
+  /* color: white; */
   display: flex;
   position: relative;
   padding: 10px;
@@ -18,9 +18,10 @@ body {
   gap: 10px;
   height: calc(100vh * 10);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url("../SteamBox-html/bg.jpg");
+  /* background-image: url("../SteamBox-html/bg.jpg"); */
   background-size: contain;
   background-repeat: no-repeat repeat;
+  color: black;
 }
 
 a {
@@ -78,7 +79,7 @@ a {
   /* background-color: #a4508b; */
   background-image: linear-gradient(to bottom, #a4508b, #5f0a87 74%);
   transform-origin: top center;
-  animation: scaleUp linear;
+  animation: scaleUp both;
   animation-timeline: scroll(root);
   animation-range: cover 0% cover 100%;
 }

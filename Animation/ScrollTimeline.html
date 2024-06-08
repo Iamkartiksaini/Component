@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll Time Line</title>
+  </head>
+  <body>
+    <div class="content"></div>
+    <div class="box"></div>
+    <div class="output"></div>
+    <style>
+      .content {
+        height: 2000px;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        background-color: rebeccapurple;
+        position: fixed;
+        top: 20px;
+        left: 0%;
+      }
+
+      .output {
+        font-family: Arial, Helvetica, sans-serif;
+        position: fixed;
+        top: 5px;
+        right: 5px;
+      }
+    </style>
+    <script>
+      const box = document.querySelector(".box");
+      const output = document.querySelector(".output");
+
+      const timeline = new ScrollTimeline({
+        source: document.documentElement,
+        axis: "y",
+      });
+
+      box.animate(
+        {
+          rotate: ["0deg", "720deg"],
+          left: ["0%", "100%"],
+        },
+        {
+          timeline,
+        }
+      );
+
+      output.textContent = `Timeline source element: ${timeline.source.nodeName}. Timeline scroll axis: ${timeline.axis}`;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View TimeLine</title>
+  </head>
+  <body>
+    <header>
+      <a target="_blank" href="./index.html">Main</a>
+      <a target="_blank" href="./timeLineScope.html">Time Line Scope</a>
+      <a target="_blank" href="./viewtimeline.html">View Time Line</a>
+    </header>
+    <div class="content">
+      <div class="box animation rot"></div>
+    </div>
+
+    <div class="scroller1">
+      <span> Scroll Up </span>
+      <div class="long-element"></div>
+    </div>
+    <div class="scroller2">
+      <span>Scroll Right</span>
+      <div class="long-element"></div>
+    </div>
+
+    <link rel="stylesheet" href="commonCSS.css" />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        /* increases the timeline scope from the .scroller <div> element
+  to the whole <body> */
+        timeline-scope: --myScroller, --myScroller2;
+        padding: 20px;
+      }
+
+      .content,
+      .scroller1,
+      .scroller2 {
+        flex: 1;
+        position: relative;
+        span {
+          position: sticky;
+          top: 40%;
+          left: 10%;
+          transform: translate(-50%, -50%);
+          font-size: 3rem;
+          color: white;
+          font-weight: bolder;
+        }
+      }
+      .scroller1,
+      .scroller2 {
+        overflow: scroll;
+        height: 500px;
+        background: deeppink;
+      }
+      .scroller1 {
+        scroll-timeline: --myScroller y, --rotateAni y;
+        .long-element {
+          padding: 3rem;
+          height: calc(100vh * 3);
+        }
+      }
+
+      .scroller2 {
+        scroll-timeline: --myScroller2 x;
+        .long-element {
+          padding: 3rem;
+          width: calc(100vh * 3);
+        }
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        background-color: rebeccapurple;
+        position: fixed;
+        top: calc(100% - 100px - 2.3rem);
+        left: 0%;
+      }
+
+      .animation {
+        animation: toUp forwards, toRight forwards, colorChange linear;
+        animation-timeline: --myScroller, --myScroller2, scroll(root);
+      }
+
+      @keyframes toUp {
+        from {
+          rotate: 0;
+          left: 0%;
+        }
+
+        to {
+          rotate: 720deg;
+          top: 0%;
+        }
+      }
+      @keyframes toRight {
+        from {
+          transform: translateX(0deg);
+          left: 0%;
+        }
+
+        to {
+          transform: translateX(720deg);
+          left: calc(100% - 100px - 2.3rem);
+        }
+      }
+      @keyframes colorChange {
+        from {
+          background-color: cadetblue;
+        }
+
+        to {
+          background-color: orangered;
+        }
+      }
+    </style>
+  </body>
+</html>
