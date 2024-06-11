@@ -4,28 +4,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dialog</title>
+    <meta
+      name="description"
+      content="Crafted a fully dynamic dialog using solely HTML and CSS,
+       featuring versatile functionality. Easily adjust its positioning – left, right, top, bottom, or center – as well as its dimensions by simply tweaking variables like
+       --pop-up-menu-height and --pop-up-menu-width. Additionally, it includes a comprehensive full Dialog mode for seamless user interaction can set by data-full-mode='true' ."
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <button id="open">Open Dialog</button>
-    <dialog id="dialog">
-      <h1>Hello</h1>
-      <button id="close">close</button>
-    </dialog>
-
-    <script>
-      (() => {
-        const ele = document.getElementById("dialog");
-        const btnClose = document.getElementById("close");
-        const btnOpen = document.getElementById("open");
-
-        btnClose.addEventListener("click", () => {
-          ele.close();
-        });
-        btnOpen.addEventListener("click", () => {
-          ele.showModal();
-        });
-      })();
-    </script>
+    <p>
+      data-full-mode= false | true if this attribute not mentioned or vaue is
+      false then dialog is on popover mode <br />
+      data-full-mode= true means dialog is fully centered with fixed position<br />
+      data-pos-x= left | right | center if this attribute not mentioned or vaue
+      is not defined then dialog position will be left to right <br />
+      data-pos-y= top | bottom | center if this attribute not mentioned or vaue
+      is not defined then dialog position will be top to bottom <br />
+      height and width can be define by variables like
+      style="--pop-up-menu-height: inherit; --pop-up-menu-width: inherit"
+    </p>
+    <div class="menu">
+      <input type="checkbox" name="menu" id="menu" />
+      <label id="btn" type="button" for="menu">menu</label>
+      <label for="menu" class="close-layer"></label>
+      <div
+        class="pop-up-menu"
+        style="--pop-up-menu-height: inherit; --pop-up-menu-width: inherit"
+        data-full-mode="false"
+        data-pos-x="left"
+        data-pos-y="top"
+      >
+        <ul class="list">
+          <label for="menu" class="item">Close Menu</label>
+          <a class="item">Item 1</a>
+          <a class="item">Item 2</a>
+          <a class="item">Item 3</a>
+          <a class="item">Item 4</a>
+        </ul>
+      </div>
+    </div>
+    <!-- 
+        data-full-mode= false | true  if this attribute not mentioned or vaue is false then dialog is on popover mode
+        data-full-mode= true means dialog is fully centered with fixed position
+        data-pos-x= left | right | center  if this attribute not mentioned or vaue is not defined then dialog position will be left to right 
+        data-pos-y= top  | bottom | center  if this attribute not mentioned or vaue is not defined then dialog position will be top to bottom 
+        height and width can be define by variables like style="--pop-up-menu-height: inherit; --pop-up-menu-width: inherit"
+-->
   </body>
 </html>
