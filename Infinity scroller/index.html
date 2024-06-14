@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intersection Observer Example</title>
+    <style>
+      body {
+        /* padding: 30vh; */
+      }
+      #target {
+        position: fixed;
+        top: 70%;
+        left: 50%;
+        width: 200px;
+        height: 200px;
+        background-color: lightblue;
+        margin: 200px auto;
+      }
+      #observer {
+        height: 100px;
+        background-color: lightcoral;
+      }
+      #target.active {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="target">Target Element</div>
+    <div id="observer">Observer</div>
+
+    <script>
+      // Create an Intersection Observer
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          console.log(entry);
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            console.log("Target element is intersecting with the observer");
+            // Your logic here when the target element intersects with the observer
+          } else {
+            console.log(
+              "Target element is no longer intersecting with the observer"
+            );
+            // Your logic here when the target element is no longer intersecting with the observer
+          }
+        });
+      });
+
+      // Select the target element
+      const targetElement = document.getElementById("target");
+
+      // Start observing the target element
+      observer.observe(targetElement);
+    </script>
+  </body>
+</html>

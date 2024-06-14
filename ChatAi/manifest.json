@@ -1,0 +1,33 @@
+{
+    "theme_color": "#7008de",
+    "background_color": "#7008de",
+    "display": "minimal-ui",
+ "start_url": "/index.html",
+    "name": "PWA App",
+    "short_name": "PWA",
+    "description": "PWA - Service workers are a fundamental technology in the future web platform. They are scripts that the browser runs in the background, separate from a web page. These scripts enable you to access features that don't need a web page or user interaction, like push notifications, background sync, and offline experiences.", 
+    "icons": [
+        {
+            "src": "./icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "./icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "purpose": "maskable",
+            "sizes": "512x512",
+            "src": "./icon512_maskable.png",
+            "type": "image/png"
+          },
+          {
+            "purpose": "any",
+            "sizes": "512x512",
+            "src": "./icon512_rounded.png",
+            "type": "image/png"
+          }
+    ]
+}
