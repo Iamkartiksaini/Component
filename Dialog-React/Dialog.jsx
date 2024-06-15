@@ -3,6 +3,20 @@ import { Fragment } from "react"
 import "./style.css"
 import PropTypes from "prop-types"
 
+
+// Required Props 
+// height
+// width
+// postion - x 
+// postion - y 
+// unqiueKey
+
+// Optional Props 
+// children - optional
+// Trigger - optional
+// Full Mode - optional
+// Label - optional
+
 const CustomDynamicDialog = ({ TiggerComponent, modelHeight, modelWidth, fullMode, posX, posY, label = "Button", unqiueKey, children }) => {
     modelHeight = modelHeight || "max-content"
     modelWidth = modelWidth || "max-content"
