@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+  </head>
+  <body>
+    <h1>Container</h1>
+    <div class="grid">
+      <div class="content">
+        <h3>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
+          libero quasi quos voluptate odit deserunt necessitatibus nesciunt ad?
+          Voluptates sequi suscipit possimus! Blanditiis suscipit perferendis id
+          fuga perspiciatis. Sequi vel minus dolorum.
+        </h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita
+          distinctio aliquam dolorem!
+        </p>
+      </div>
+    </div>
+    <div class="grid">
+      <h3>
+        uscipit possimus! Blanditiis suscipit perferendis id fuga perspiciatis.
+        Sequi vel minus dolorum.
+      </h3>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita
+          distinctio aliquam dolorem!
+        </p>
+        r sit amet consectetur adipisicing elit. Nam placeat libero quasi quos
+        voluptate odit deserunt necessitatibus nesciunt ad? Voluptates sequi
+        suscipit possimus! Blanditiis suscipit perferendis id fuga perspiciatis.
+        Sequi vel minus dolorum.
+      </div>
+    </div>
+    <style>
+      h1 {
+        color: rgb(126, 191, 68);
+      }
+      .grid {
+        margin: 10px 0px;
+        display: grid;
+        padding: 10px;
+        grid-template-rows: 0fr;
+        background-color: rgba(0, 0, 0, 0.249);
+        transition: all 0.6s ease-in-out;
+        .content {
+          overflow: hidden;
+        }
+        &:hover {
+          grid-template-rows: 1fr;
+          background-color: grey;
+          .content {
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.531);
+          }
+        }
+      }
+    </style>
+  </body>
+</html>
