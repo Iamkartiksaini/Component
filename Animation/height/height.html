@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+  </head>
+  <body>
+    <h1>Container</h1>
+    <div class="grid">
+      <h3>
+        uscipit possimus! Blanditiis suscipit perferendis id fuga perspiciatis.
+        Sequi vel minus dolorum.
+      </h3>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita
+          distinctio aliquam dolorem!
+        </p>
+        r sit amet consectetur adipisicing elit. Nam placeat libero quasi quos
+        voluptate odit deserunt necessitatibus nesciunt ad? Voluptates sequi
+        suscipit possimus! Blanditiis suscipit perferendis id fuga perspiciatis.
+        Sequi vel minus dolorum.
+      </div>
+    </div>
+    <div class="grid">
+      <h3>
+        uscipit possimus! Blanditiis suscipit perferendis id fuga perspiciatis.
+        Sequi vel minus dolorum.
+      </h3>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit a met, consectetur adipisicing elit. Expedita
+          distinctio aliquam dolorem!
+        </p>
+        <h3>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
+          molestias vitae ad, cupiditate voluptatibus sed accusamus, maiores
+          dolorum magnam eius molestiae voluptatem id ex. Assumenda ratione id
+          odio error laudantium. Voluptas similique officiis dolorem maxime
+          corporis veritatis pariatur recusandae quo accusamus! Perspiciatis
+          iusto sunt laboriosam vero quia, ipsa rem commodi accusamus molestiae
+          nihil facere asperiores.
+        </h3>
+      </div>
+    </div>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      h1 {
+        color: rgb(126, 191, 68);
+      }
+      .grid {
+        margin: 10px 0px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #0000004a;
+        transition: background-color 0.5s ease-in-out;
+
+        .content {
+          overflow: hidden;
+          max-height: 0px;
+          transition: max-height 2.5s ease;
+        }
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.15);
+          .content {
+            max-height: 200vh;
+          }
+        }
+      }
+    </style>
+  </body>
+</html>
