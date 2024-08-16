@@ -36,4 +36,20 @@ const values = compareAndUpdateValues({
   maxLengthArr: x,
   resArr: y,
 });
-console.log("Get Updated Values", values);
+// console.log("Get Updated Values", values);
+
+function updateObjectValues(oldObj, newObj) {
+  for (const key in newObj) {
+    if (newObj.hasOwnProperty(key) && oldObj[key] !== newObj[key]) {
+      oldObj[key] = newObj[key];
+    }
+  }
+  return oldObj;
+}
+
+const old = { name: "bappi", roll: 23 };
+const newObj = { name: "bappi", roll: 1 };
+
+const updatedObject = updateObjectValues(c, v);
+
+console.log("Get Updated Values", updatedObject);
