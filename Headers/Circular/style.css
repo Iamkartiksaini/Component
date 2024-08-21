@@ -1,111 +1,66 @@
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
-header {
-  padding: 0rem 1rem;
-  background-color: #00000068;
+.header {
   display: flex;
   justify-content: space-between;
-  height: 60px;
   align-items: center;
+  /* padding: 1rem; */
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.21);
 }
-
-.menu-container {
+.container {
   position: relative;
 }
-
-.nav-links {
-  display: flex;
+.ul {
   position: fixed;
-  overflow: hidden;
   right: 0px;
   top: 0px;
+  padding: 1rem;
   width: 50vw;
   height: 100vh;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  padding-top: 60px;
-  z-index: 3;
+  background-color: rgba(95, 158, 160, 0.274);
+  overflow: hidden;
 }
-
-.nav-links a {
-  /* opacity: 0; */
-  /* animation: opa 0.3s forwards; */
-  /* animation-delay: 3.1s; */
-  color: white;
-  font-size: 1.5rem;
-  text-decoration: none;
-  font-style: italic;
-  z-index: 11;
-}
-
-.nav-links::before {
-  content: "";
-  right: 0px;
-  transition: scale 0.2s ease-in-out;
-  top: 0px;
-  z-index: 2;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  position: absolute;
-  background-color: #3f51b5;
-  transform-origin: center center;
-}
-
-input {
-  display: none; /* Hide the checkbox */
-}
-
-label {
+.ul li {
   position: relative;
-  z-index: 11;
+  z-index: 9;
+  list-style: none;
+  font-size: 2rem;
   color: white;
-  font-weight: 800;
 }
-
-header::after {
+.ul::before {
   content: "";
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  border-radius: 50%;
+  background-color: rgb(255, 0, 255);
+  height: max(100vh, 100vw);
+  width: max(100vh, 100vw);
+  transform-origin: right top;
+  scale: 0.04;
+  animation: ani 1.5s infinite alternate-reverse;
+}
+.container::after {
+  content: "";
+  position: fixed;
   left: 0px;
   top: 0px;
+  background-color: rgba(127, 127, 127, 0.281);
   height: 100vh;
   width: 50vw;
-  position: fixed;
-  background-color: #00000012;
-  transform-origin: center center;
 }
 
-input:not(:checked) + .nav-links::before {
-  animation: scaleUp 3s reverse forwards ease-in-out;
-}
-
-input:checked + .nav-links::before {
-  animation: scaleUp 3s forwards ease-in-out;
-}
-
-@keyframes scaleUp {
-  0% {
-    height: 40px;
-    width: 40px;
-  }
+@keyframes ani {
   100% {
-    height: 1000px;
-    width: 1000px;
-    transform: translate(25%, -15%);
+    right: -50%;
+    top: -25%;
+    scale: 1;
   }
 }
-
-/* @keyframes opa {
-  100% {
-    opacity: 1;
-  }
-} */
