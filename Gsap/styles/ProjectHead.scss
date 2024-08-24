@@ -1,0 +1,74 @@
+.ProjectHead {
+    .section-1 {
+        padding: calc(var(--main-p-x) * 2) calc(var(--main-p-x) * 4);
+        background-color: #ebebeb;
+
+        .h1 {
+            font-size: calc(var(--text-84) * 1.5);
+            --gap: 1.8rem
+        }
+
+        .h2 {
+            font-size: var(--text-84);
+            color: rgba(25, 27, 29, .6);
+            --gap: 1.2rem
+        }
+    }
+
+    .p {
+        color: rgba(25, 27, 29, .6);
+        font-size: var(--text-28);
+    }
+
+    .description {
+        padding: calc(var(--main-p-x) * 4) calc(var(--main-p-x) * 4);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: var(--main-p-x);
+
+        .time {
+            grid-column: span 2;
+        }
+
+        .txt {
+            grid-column: 3 / -1;
+        }
+    }
+}
+
+
+@media screen and (max-width:750px) {
+    .ProjectHead {
+        font-size: 8px;
+
+        .section-1,
+        .description {
+            padding: calc(var(--main-p-x)* 3) calc(var(--main-p-x) * 2);
+        }
+    }
+}
+
+@media screen and (max-width:480px) {
+    .ProjectHead {
+        .section-1 {
+            font-size: 6px;
+
+            .h1 {
+                overflow-wrap: break-word;
+                // word-break: break-all;
+                hyphens: manual;
+            }
+        }
+
+        .description {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .section-1,
+        .description {
+            padding: calc(var(--main-p-x)* 2) var(--main-p-x);
+        }
+    }
+}

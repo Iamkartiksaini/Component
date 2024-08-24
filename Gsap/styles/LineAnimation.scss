@@ -1,0 +1,15 @@
+.line-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap, 5px);
+    line-gap-override: 2rem;
+
+    .word-wrapper {
+        display: inline-block;
+        overflow: hidden;
+
+        .char-wrapper {
+            display: inline-block;
+        }
+    }
+}
