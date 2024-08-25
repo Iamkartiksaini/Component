@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>AOS Animation</title>
+  </head>
+  <body>
+    <div id="line">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+      reiciendis dicta, quisquam aliquam quo alias et officia id voluptas
+      possimus corrupti beatae!
+    </div>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        padding-top: 50vh;
+        min-height: 100vh;
+        font-size: 2rem;
+        display: flex;
+        padding: 2rem;
+        justify-content: center;
+        align-items: center;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: darkorange;
+        font-weight: 800;
+      }
+      #line {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      .word {
+        display: flex;
+      }
+    </style>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true });
+
+      function createScatterText(parentId) {
+        const wrapper = document.getElementById(parentId);
+        const line = wrapper.innerText;
+        wrapper.innerText = "";
+        const words = line.split(" ");
+        words.forEach((word, wI) => {
+          const divEle = document.createElement("div");
+          divEle.classList.add("word");
+          const letters = word.split("");
+          letters.forEach((letter, index) => {
+            const delay = index * 100;
+            const createEle = document.createElement("div");
+            createEle.innerText = letter;
+            createEle.setAttribute("data-aos", "fade-up");
+            createEle.setAttribute("data-aos-easing", "ease-in-back");
+            createEle.setAttribute("data-aos-delay", delay);
+            createEle.setAttribute(
+              "data-aos-anchor-placement",
+              "center-bottom"
+            );
+            createEle.setAttribute("data-aos-duration", 20);
+            divEle.appendChild(createEle);
+          });
+          wrapper.appendChild(divEle);
+        });
+      }
+      createScatterText("line");
+    </script>
+  </body>
+</html>
