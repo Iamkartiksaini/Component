@@ -6,7 +6,12 @@
     <title>SVG Grid Viewer</title>
   </head>
   <body>
-    <input type="file" id="svgInput" accept="image/*,.svg" multiple />
+    <header>
+      <label for="range">Image Width</label>
+      <input type="range" min="200" max="500" onchange="handler()" id="range" />
+      <button id="btn">200px</button>
+      <input type="file" id="svgInput" accept="image/*,.svg" multiple />
+    </header>
     <div id="svgGrid" class="svg-container"></div>
 
     <style>
@@ -17,7 +22,7 @@
         min-height: 100%;
         background-color: aliceblue;
       }
-      input {
+      header {
         position: fixed;
         top: 10px;
         left: 50%;
@@ -26,6 +31,8 @@
         color: white;
         padding: 20px;
         border-radius: 10px;
+        display: flex;
+        gap: 2rem;
       }
 
       .svg-container {
@@ -53,6 +60,18 @@
       document
         .getElementById("svgInput")
         .addEventListener("change", handleFileSelect);
+
+      const getRange = document.getElementById("range");
+      const btn = document.getElementById("btn");
+
+      function handler(e) {
+        const allImages = document.querySelectorAll("#svgGrid img");
+        btn.innerText = getRange.value + "px";
+        allImages.forEach((img) => {
+          img.style.flexBasis = getRange.value + "px";
+          img.style.height = getRange.value + "px";
+        });
+      }
 
       function imageClick(name) {
         console.log("image name", name);

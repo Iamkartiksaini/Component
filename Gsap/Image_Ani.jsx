@@ -1,5 +1,6 @@
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/all";
+import "./styles/Image.scss"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,29 +49,15 @@ const GsapImage = ({ height, width, src, alt, scrub = false, markers = false, im
     };
 
     return (
-        <div style={{
-            overflow: "hidden", position: "relative",
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center"
-        }} className="overflow-wrapper">
+        <div className="overflow-wrapper">
             <div
                 data-layer-name={generateRandomId}
                 style={{
-                    position: "absolute",
-                    height: "100%", width: "100%",
-                    top: "0", left: "0",
-                    zIndex: 3, ...layerCSS_Style
+                    ...layerCSS_Style
                 }}
                 className="colorLayer"></div>
             <img loading="lazy"
                 style={{
-                    scale: "1.5",
-                    maxHeight: "calc(100vh - var(--header-h) - 2rem)",
-                    objectFit: "cover",
                     ...imageCSS_Style
                 }}
                 onLoad={handleLoad}

@@ -1,0 +1,25 @@
+.overflow-wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: var(--floatImage, center);
+    justify-content: center;
+
+    .colorLayer {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 3;
+    }
+
+    img {
+        scale: 1.5;
+        max-height: calc(100vh - var(--header-h) - 2rem);
+        object-fit: cover;
+    }
+}
