@@ -1,4 +1,4 @@
-import LineSplitter from "./Line_Ani"
+import StaggeredWords from "./LineIntoWords"
 import "./styles/ProjectHead.scss"
 
 const ProjectHead = (props) => {
@@ -12,26 +12,26 @@ const ProjectHead = (props) => {
         <div className="ProjectHead">
             <div className="section-1">
                 <div className="h1 text-600">
-                    <LineSplitter>
+                    <StaggeredWords duration={1} delay={.4} >
                         {title}
-                    </LineSplitter>
+                    </StaggeredWords>
                 </div>
                 <div className="h2 text-600">
-                    <LineSplitter>
+                    <StaggeredWords duration={1} delay={.4} >
                         {category}
-                    </LineSplitter>
+                    </StaggeredWords>
                 </div>
             </div>
             <div className="description">
                 <div className='p time'>
-                    <LineSplitter>
+                    <StaggeredWords duration={1} delay={.4} >
                         {date}
-                    </LineSplitter>
+                    </StaggeredWords>
                 </div>
                 <div className='txt p'>
-                    <LineSplitter>
+                    <StaggeredWords duration={1} delay={.02} >
                         {description}
-                    </LineSplitter>
+                    </StaggeredWords>
                 </div>
             </div>
         </div>

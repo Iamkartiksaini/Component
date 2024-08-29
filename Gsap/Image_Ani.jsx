@@ -9,7 +9,7 @@ const GsapImage = ({ height, width, src, alt, scrub = false, markers = false, im
     image_transitionStyle = {},
     transitionStyle = { x: "-100%" }, ...props }) => {
     let newAlt = alt || src
-    let getSrc = src.includes("http") ? src : "/assets/" + src
+    let getSrc = src.includes("http") ? src : src.startsWith("/assets/") ? src : "/assets/" + src
     const date = new Date().getMilliseconds()
     const generateRandomId = Math.random().toPrecision(3) + date
 
