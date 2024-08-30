@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSAP Timeline Example with Stagger</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+        margin: 0;
+      }
+      body > div {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        margin: 0 10px;
+        position: relative;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  </head>
+  <body>
+    <div id="box">1</div>
+    <div id="box2">2</div>
+    <div id="box3">3</div>
+    <div id="box4">4</div>
+
+    <script>
+      // Initialize GSAP timeline
+      const tl = gsap.timeline({});
+
+      // Create a simple animation timeline with stagger effect
+      tl.to("#box", { duration: 1, x: 300, backgroundColor: "blue" }) // Move right and change color
+        .to(
+          "#box2",
+          { duration: 1, y: 200, backgroundColor: "cadetblue" },
+          "-=0.5"
+        ) // Move down with overlap
+        .to("#box3", { duration: 1, x: -100, backgroundColor: "red" }, "-=0.5") // Move back to the left and change color with overlap
+        .to("#box4", {
+          duration: 1,
+          y: 100,
+          x: 100,
+          backgroundColor: "cyan",
+          stagger: 0.2,
+        }); // Move back to the top with stagger
+    </script>
+  </body>
+</html>

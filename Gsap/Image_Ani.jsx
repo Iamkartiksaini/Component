@@ -5,7 +5,7 @@ import "./styles/Image.scss"
 gsap.registerPlugin(ScrollTrigger);
 
 // eslint-disable-next-line react/prop-types
-const GsapImage = ({ height, width, src, alt, scrub = false, markers = false, imageCSS_Style = {}, layerCSS_Style = { backgroundColor: "#fff" },
+const GsapImage = ({ height, width, duration = 2, delay = 0, src, alt, scrub = false, markers = false, imageCSS_Style = {}, layerCSS_Style = { backgroundColor: "#fff" },
     image_transitionStyle = {},
     transitionStyle = { x: "-100%" }, ...props }) => {
     let newAlt = alt || src
@@ -17,7 +17,6 @@ const GsapImage = ({ height, width, src, alt, scrub = false, markers = false, im
         const img = document.querySelector(`[data-image-name="${generateRandomId}"]`)
         const layer = document.querySelector(` [data-layer-name="${generateRandomId}"]`)
         const delay = .20
-        const duration = 2
 
         if (layer) {
             const trigger = {

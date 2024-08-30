@@ -59,7 +59,7 @@ const WordSplitter = ({ word, index, delay = 1 }) => {
     );
 };
 
-const LineSplitter = ({ delay = 1, children }) => {
+const LineToCharacters = ({ delay = 1, children }) => {
     const line = children || "No Words";
     const wordsRef = useRef([]);
 
@@ -123,4 +123,4 @@ function useArrayRef() {
     return [lettersRef, (ref) => ref && lettersRef.current.push(ref)];
 }
 
-export default LineSplitter;
+export default LineToCharacters;
