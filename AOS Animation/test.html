@@ -6,13 +6,6 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="style.css" />
     <title>AOS Animation</title>
-  </head>
-  <body>
-    <div id="line">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-      reiciendis dicta, quisquam aliquam quo alias et officia id voluptas
-      possimus corrupti beatae!
-    </div>
     <style>
       * {
         box-sizing: border-box;
@@ -40,37 +33,57 @@
         display: flex;
       }
     </style>
+  </head>
+  <body>
+    <div id="line">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+      reiciendis dicta, quisquam aliquam quo alias et officia id voluptas
+      possimus corrupti beatae!
+    </div>
+
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init({ once: true });
+      document.addEventListener("DOMContentLoaded", function () {
+        AOS.init({ once: true });
 
-      function createScatterText(parentId) {
-        const wrapper = document.getElementById(parentId);
-        const line = wrapper.innerText;
-        wrapper.innerText = "";
-        const words = line.split(" ");
-        words.forEach((word, wI) => {
-          const divEle = document.createElement("div");
-          divEle.classList.add("word");
-          const letters = word.split("");
-          letters.forEach((letter, index) => {
-            const delay = index * 100;
-            const createEle = document.createElement("div");
-            createEle.innerText = letter;
-            createEle.setAttribute("data-aos", "fade-up");
-            createEle.setAttribute("data-aos-easing", "ease-in-back");
-            createEle.setAttribute("data-aos-delay", delay);
-            createEle.setAttribute(
-              "data-aos-anchor-placement",
-              "center-bottom"
-            );
-            createEle.setAttribute("data-aos-duration", 20);
-            divEle.appendChild(createEle);
+        function createScatterText(parentId, staggerEffectOn) {
+          const wrapper = document.getElementById(parentId);
+          const line = wrapper.innerText;
+          wrapper.innerText = "";
+          const words = line.split(" ");
+          words.forEach((word) => {
+            const divEle = document.createElement("div");
+            divEle.classList.add("word");
+            if (staggerEffectOn === "words") {
+              divEle.innerText = word;
+              divEle.setAttribute("data-aos", "fade-up");
+              divEle.setAttribute("data-aos-easing", "ease-in-back");
+              divEle.setAttribute("data-aos-delay", 100); // Set a default delay for words
+              divEle.setAttribute("data-aos-anchor-placement", "center-bottom");
+              divEle.setAttribute("data-aos-duration", 500); // Set a default duration for words
+            } else if (staggerEffectOn === "letters") {
+              const letters = word.split("");
+              letters.forEach((letter, index) => {
+                const delay = index * 100;
+                const createEle = document.createElement("div");
+                createEle.innerText = letter;
+                createEle.setAttribute("data-aos", "fade-up");
+                createEle.setAttribute("data-aos-easing", "ease-in-back");
+                createEle.setAttribute("data-aos-delay", delay);
+                createEle.setAttribute(
+                  "data-aos-anchor-placement",
+                  "center-bottom"
+                );
+                createEle.setAttribute("data-aos-duration", 500); // Set a default duration for letters
+                divEle.appendChild(createEle);
+              });
+            }
+            wrapper.appendChild(divEle);
           });
-          wrapper.appendChild(divEle);
-        });
-      }
-      createScatterText("line");
+        }
+
+        createScatterText("line", "words"); // Change to "letters" if you want letter animation
+      });
     </script>
   </body>
 </html>
