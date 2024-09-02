@@ -1,8 +1,8 @@
 .line-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--gap, 5px);
-    line-gap-override: 2rem;
+    row-gap: var(--row-gap, 5px);
+    column-gap: var(--column-gap, 5px);
 
     .word-wrapper {
         display: inline-block;

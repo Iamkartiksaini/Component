@@ -12,7 +12,7 @@ const ProjectHead = (props) => {
         <div className="ProjectHead">
             <div className="section-1">
                 <div className="h1 text-600">
-                    <StaggeredWords duration={1} delay={.4} >
+                    <StaggeredWords transitionStyle={{ overflow: "visible" }} duration={1} delay={.4} >
                         {title}
                     </StaggeredWords>
                 </div>
@@ -23,12 +23,12 @@ const ProjectHead = (props) => {
                 </div>
             </div>
             <div className="description">
-                <div className='p time'>
+                <div style={{ fontWeight: "700" }} className='p time'>
                     <StaggeredWords duration={1} delay={.4} >
                         {date}
                     </StaggeredWords>
                 </div>
-                <div className='txt p'>
+                <div style={{ fontWeight: "700" }} className='txt p'>
                     <StaggeredWords duration={1} delay={.02} >
                         {description}
                     </StaggeredWords>

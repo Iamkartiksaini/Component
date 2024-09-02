@@ -5,13 +5,15 @@
 
         .h1 {
             font-size: calc(var(--text-84) * 1.5);
-            --gap: 1.8rem
+            --column-gap: 1.8rem;
+            --row-gap: 0px;
         }
 
         .h2 {
             font-size: var(--text-84);
             color: rgba(25, 27, 29, .6);
-            --gap: 1.2rem
+            --column-gap: 1.2rem;
+            --row-gap: 0px
         }
     }
 
@@ -45,6 +47,17 @@
         .description {
             padding: calc(var(--main-p-x)* 3) calc(var(--main-p-x) * 2);
         }
+
+        .section-1 {
+            .h1 {
+                line-height: 80px;
+            }
+
+            .h2 {
+                margin-top: .7em;
+                line-height: 50px;
+            }
+        }
     }
 }
 
@@ -55,8 +68,13 @@
 
             .h1 {
                 overflow-wrap: break-word;
-                // word-break: break-all;
-                hyphens: manual;
+                line-height: 55px;
+                hyphens: auto;
+                word-break: break-all;
+            }
+
+            .h2 {
+                line-height: 40px;
             }
         }
 
