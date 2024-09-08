@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch Saavn API</title>
+  </head>
+  <body>
+    <h1>Saavn API Response:</h1>
+    <form id="searchForm">
+      <label for="searchQuery">Search Query:</label>
+      <input type="text" id="searchQuery" name="searchQuery" />
+      <button type="submit">Search</button>
+    </form>
+    <ul id="songList"></ul>
+    <div id="player"></div>
+    <style>
+      img {
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+        border-radius: 0.75rem;
+      }
+      ul {
+        display: flex;
+        gap: 0.75rem;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+      li {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 0.75rem;
+        gap: 0.5rem;
+        background-color: rgba(71, 71, 71, 0.104);
+      }
+    </style>
+    <script>
+      // Function to fetch data from the API
+      function fetchSongs(query) {
+        const apiUrl = `https://saavn-api-sigma.vercel.app/api/search/songs?query=${query}&page=1&limit=4`;
+
+        // Fetch data from the API
+        fetch(apiUrl)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("data", data);
+            displaySongs(data.data.results);
+          })
+          .catch((error) => console.error("Error fetching data:", error));
+      }
+
+      const player = document.getElementById("player");
+      // Function to display the list of songs
+      function displaySongs(songs) {
+        const songList = document.getElementById("songList");
+        songList.innerHTML = songs
+          .map((song) => {
+            return `<li data-song-name="${song.name}" data-song-url="${
+              song.downloadUrl[0].url
+            }" onclick="playMusic(event)">
+          <img data-song-name="${song.name}" data-song-url="${
+              song.downloadUrl[0].url
+            }" src="${song.image[0].url}"/>
+          <p 
+          data-song-name="${song.name}" data-song-url="${
+              song.downloadUrl[0].url
+            }">${song.name + " " + "(" + song.language + ")"}  </p>
+            </li>`;
+          })
+          .join("");
+      }
+      function playMusic(event) {
+        const songSrc = event.target.getAttribute("data-song-url");
+        const songName = event.target.getAttribute("data-song-name");
+        console.log("son", songName);
+        const music = document.createElement("audio");
+        const p = document.createElement("p");
+        music.src = songSrc;
+        music.play();
+        p.innerText = "Playing " + songName;
+        player.appendChild(p);
+        // alert("Now Playing" + name);
+      }
+
+      document
+        .getElementById("searchForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+          const searchQuery = document
+            .getElementById("searchQuery")
+            .value.trim(); // Get the search query from the input field
+          if (searchQuery !== "") {
+            fetchSongs(searchQuery); // Call fetchSongs function with the search query
+          } else {
+            alert("Please enter a search query."); // Alert user if the search query is empty
+          }
+        });
+    </script>
+  </body>
+</html>
