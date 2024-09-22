@@ -1,0 +1,36 @@
+@layer lvl-1, lvl-3, lvl-2;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@property --my-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: red;
+}
+
+@layer lvl-1 {
+  h1 {
+    color: green;
+  }
+}
+
+@layer lvl-2 {
+  h1 {
+    color: var(--my-color);
+  }
+}
+@layer lvl-3 {
+  h1 {
+    color: cadetblue;
+  }
+}
