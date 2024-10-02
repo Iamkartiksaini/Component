@@ -22,6 +22,9 @@ body {
   h1 {
     color: green;
   }
+  button {
+    padding: 1rem 2rem;
+  }
 }
 
 @layer lvl-2 {
