@@ -1,0 +1,104 @@
+.PublicViewtable {
+    padding: 0;
+
+    .nav-bar {
+        display: flex;
+        padding: 10px 20px;
+        align-items: center;
+        justify-content: space-between;
+        background: #F8FAFF;
+        border-bottom: 1px solid #f8faff;
+
+        .left-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            p {
+                font-size: 20px;
+            }
+        }
+    }
+
+    section {
+        padding-left: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        margin-top: 20px;
+
+    }
+
+    ._footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        background-color: #F8FAFF;
+        padding: 10px 0;
+        border: 1px solid #e5e7eb;
+        padding-left: 40px;
+        border-left: none;
+        border-right: none;
+    }
+
+    .Columns {
+        display: flex;
+        gap: 30px;
+
+        .col {
+            .wrapper {
+                border: 1px solid #EDF0F4;
+                width: 278px;
+
+                .p-inputgroup {
+                    border-bottom: 1px solid #EDF0F4;
+
+                    input {
+                        outline: none;
+                        border: none;
+                        box-shadow: none;
+                    }
+                }
+
+                .List {
+                    padding: 10px;
+                    border-radius: 4px;
+                    height: 326px;
+                    overflow-y: auto;
+
+                    .placeholder {
+                        list-style: none;
+                        margin-left: 11px;
+                        height: 31px;
+                        margin-right: 11px;
+                        padding: 3px 10px;
+                        color: #434D5F;
+                        border-radius: 3px;
+                        border: 1px dashed rgb(0, 162, 255);
+                        // background-color: #E7F2FF;
+                    }
+
+                    .item {
+                        list-style: none;
+                        margin-left: 11px;
+                        margin-right: 11px;
+                        padding: 3px 10px;
+                        color: #434D5F;
+                        cursor: move;
+
+                        .selected,
+                        &:hover {
+                            background-color: #E7F2FF;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+}
