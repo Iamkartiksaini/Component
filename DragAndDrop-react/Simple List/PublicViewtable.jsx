@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { Button } from 'primereact/button';
 import "./style.scss"
 import { DragAndDropSections } from './DragAndDrop';
-const PublicViewtable = () => {
+import { Link } from 'react-router-dom';
+
+const List_DragAndDropPage = () => {
     const allOptions = [
         // { headerName: "Lead Name*", field: "Lead Name*" },
         // { headerName: "Company", field: "Company" },
@@ -62,10 +64,10 @@ const PublicViewtable = () => {
         <div className='PublicViewtable'>
             <div className="nav-bar">
                 <div className="left-section">
-                    <a href="/dashboard/contacts">
+                    <Link className="back-link" to="/">
                         <i className='pi pi-arrow-left'></i>
-                    </a>
-                    <p>All Contacts <i className='pi pi-star'></i></p>
+                    </Link>
+                    <p>Drag and Drop With Re-order <i className='pi pi-star'></i></p>
                 </div>
                 <div className="right-section">
                     <i className='pi pi-info-circle'></i>
@@ -73,16 +75,16 @@ const PublicViewtable = () => {
             </div>
             <section>
                 <p>
-                    Choose Columns - Tabular View  <i className='pi pi-info-circle'></i>
+                    Re-Order is available in same list <i className='pi pi-info-circle'></i>
                 </p>
                 <div className="Columns">
-                    <div className="col">
+                    <div className="col-card">
                         <p style={{ fontWeight: "500" }}>Available</p>
                         <div className="wrapper">
                             <DragAndDropSections data={tableFields["all_Fields"]} sectionId={"all_Fields"} state={tableFields} setState={setTableFields} />
                         </div>
                     </div>
-                    <div className="col">
+                    <div className="col-card">
                         <p style={{ fontWeight: "500" }}>Selected</p>
                         <div className="wrapper">
                             <DragAndDropSections data={tableFields["active_Fields"]} sectionId={"active_Fields"} state={tableFields} setState={setTableFields} />
@@ -100,5 +102,5 @@ const PublicViewtable = () => {
     )
 }
 
-export default PublicViewtable
+export default List_DragAndDropPage
 

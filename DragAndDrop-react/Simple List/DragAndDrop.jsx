@@ -77,17 +77,14 @@ export const DragAndDropSections = ({ data, sectionId, state, setState }) => {
         updateDataCopy(state[sectionId])
     }, [state])
 
-    useEffect(() => {
-        if (filterValue === "") {
-            updateDataCopy(data)
-        }
-        else {
-            const newData = [...data]
-            const updateList = newData.filter(val => val.headerName.toLowerCase().includes(filterValue.toLowerCase()))
-            updateDataCopy(updateList)
-        }
-    }, [filterValue, state])
-
+    function filterObjectsByValue(item, compareValue) {
+        return Object.values(item).some(val => {
+            if (typeof val === 'string') {
+                return val.toLowerCase().includes(compareValue.toLowerCase());
+            }
+            return false;
+        }) ? true : false;
+    }
     return <>
         <div style={{ alignItems: "center" }} className="p-inputgroup flex-1 pr">
             <i style={{ paddingLeft: "10px", color: "var(--labelColor)" }} className="pi pi-search" > </i>
@@ -100,13 +97,17 @@ export const DragAndDropSections = ({ data, sectionId, state, setState }) => {
                 handleDrop({ event, value: data, DroppingTo: sectionId, state, setState })
                 setDropOnIndex(null)
             }}>
-            {dataCopy.map((field, index) => <Fragment key={index}><DragItemWrapper
-                dropOnState={dropOnState}
-                dragItemState={dragItemState}
-                itemIndex={index}
-                sectionId={sectionId}
-                item={field}
-            /></Fragment>)}
+            {dataCopy.map((field, index) => {
+                const isMatched = filterObjectsByValue(field, filterValue)
+                if (!isMatched) return
+                return <Fragment key={index}><DragItemWrapper
+                    dropOnState={dropOnState}
+                    dragItemState={dragItemState}
+                    itemIndex={index}
+                    sectionId={sectionId}
+                    item={field}
+                /></Fragment>
+            })}
         </div>
     </>
 }
